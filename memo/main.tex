@@ -1,0 +1,726 @@
+\documentclass[ebook, b5paper, openright]{memoir}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage[colorlinks=true, linkcolor=blue, urlcolor=blue]{hyperref}
+\usepackage{enumitem}
+\usepackage{imakeidx}
+\usepackage[brazilian]{babel}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{decorations.text, decorations.pathreplacing, decorations.pathmorphing}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{complexity}
+\usepackage{MnSymbol}
+
+%% tikz styles
+\tikzset{
+    main/.style={
+        circle,
+        draw,
+        fill=black,
+        inner sep=1pt,
+        minimum size=1.5mm
+    },
+}
+
+%% refs
+\usepackage[
+    backend=biber,
+    style=authoryear-icomp,
+]{biblatex}
+\addbibresource{refs.bib}
+
+\makeindex[columns=1, title=Índice Remissivo]
+
+\usepackage[most]{tcolorbox}
+
+\newtheorem{theorem}{Teorema}[chapter]
+\newtheorem{lemma}{Lema}[chapter]
+\newtheorem{corollary}{Corolário}[chapter]
+\newtheorem{proposition}{Proposição}[chapter]
+\newtheorem{claim}{Afirmação}[chapter]
+\newtheorem{conjecture}{Conjectura}[chapter]
+\newtheorem{definition}{Definição}[chapter]
+\newtheorem{remark}{Observação}
+
+\newtcbtheorem{question}{\bfseries Pergunta}{enhanced,drop shadow={black!50!white},
+  coltitle=black,
+    top=0.1in,
+      attach boxed title to top left=
+        {xshift=1.5em,yshift=-\tcboxedtitleheight/2},
+          boxed title style={size=small,colback=pink}
+          }{question}
+
+% parameters
+\newcommand{\tw}[1]{\text{tw}({#1})}
+
+\begin{document}
+
+\medievalpage[12]
+
+\begin{titlingpage}
+\centering
+
+{\large Cicero Samuel Santos Morais}
+
+\vfill
+\textsc{\Huge Subgrafos Rainbow}\\
+\textsc{\Huge e Cobertura de Arestas}\\
+\textsc{\Huge em Grafos}
+
+%\vfill
+
+%\textit{\Large Um acervo de técnicas matemáticas e demonstrações reunidas por mim ao longo do tempo}
+
+\vfill
+\today\footnote{Iniciado em 27 de novembro de 2025}
+%\maketitle
+\end{titlingpage}
+
+\tableofcontents
+
+\chapter{Preliminares}
+
+Uma coloração de arestas de um grafo $G=(V, E)$ é uma atribuição de cores $c:E(G)\rightarrow \mathbb{N}$ a cada aresta de $G$. Dizemos que a coloração é \textit{própria} se, para todo par de arestas $e$ e $f$ que compartilham uma extremidade, temos que $c(e) \neq c(f)$. O \textit{número aresta-cromático} de $G$, denotado por $\chi'(G)$, é igual a menor quantidade de cores com as quais $G$ admite uma coloração própria de arestas. Um limitante trivial para o número aresta-cromático é o grau máximo de $G$, isto é, $\Delta(G) \leq \chi'(G)$. König provou que a igualdade vale quando o grafo é bipartido.
+
+\begin{theorem}[König]
+  Se $G$ é bipartido, então $\chi'(G) = \Delta(G)$.
+\end{theorem}
+
+Shannon e Vizing provaram limitantes superiores para grafos quaisquer em função do grau máximo e da multiplicidade de arestas do grafo. A \textit{multiplicidade de arestas} de um grafo $G$, denotada por $\mu(G)$, é a quantidade máxima de arestas múltiplas (com as mesmas extremidades) de $G$. Quando $G$ é simples, $\mu(G)=1$.
+
+\begin{theorem}[Shannon]
+  $\chi'(G) \leq \frac{3}{2}\Delta(G)$.
+\end{theorem}
+
+\begin{theorem}[Vizing]
+  $\chi'(G) \leq \Delta(G) + \mu(G)$.
+\end{theorem}
+
+Podemos observar que cada classe de cor $E_i = \{e \in E(G) \mid c(e) = i\}$ induz um \textit{emparelhamento} de $G$ quando a coloração é própria, pois não é permitido haver duas arestas adjacentes com mesma cor.
+
+Um caminho $P=(v1, \dots, v_k)$ em um grafo aresta-colorido é uma \textit{caminho rainbow} se $c(v_i)=c(v_j)$ para todo $i, j \in \{1, \dots, k\}$, isto é, se nenhuma cor aparece em mais de uma aresta do caminho. Na Figura \ref{fig:caminho_rainbow}, exemplificamos uma coloração própria das arestas de um grafo e destacamos um caminho rainbow.
+
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}{0.45\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \node[main] (a) {};
+      \node[main] (b) [below left of=a] {};
+      \node[main] (c) [above left of=b] {};
+      \node[main] (d) [below left of=b] {};
+      \node[main] (e) [below right of=b] {};
+      \node[main] (f) [right of=a] {};
+      \node[main] (g) [right of=e] {};
+      \node[main] (h) [above right of=g] {};
+
+      \draw[-, blue, thick, preaction={draw=blue!50, line width=5pt, opacity=0.2}] (a) to (b);
+      \draw[-, green, thick] (a) to (c);
+      \draw[-, red, thick] (a) to (e);
+      \draw[-, orange, thick] (a) to (h);
+      \draw[-, violet, thick, preaction={draw=blue!50, line width=5pt, opacity=0.2}] (a) to (f);
+      
+      \draw[-, red, thick] (b) to (c);
+      \draw[-, green, thick, preaction={draw=blue!50, line width=5pt, opacity=0.2}] (b) to (d);
+      \draw[-, orange, thick] (b) to (e);
+      \draw[-, violet, thick] (b) to (h);
+
+      \draw[-, orange, thick, preaction={draw=blue!50, line width=5pt, opacity=0.2}] (c) to (d);
+      \draw[-, blue, thick] (c) to[bend left=30] (f);
+
+      \draw[-, blue, thick] (d) to (e);
+      \draw[-, red, thick] (d) to[bend right=30] (g);
+
+      \draw[-, green, thick] (e) to (h);
+      \draw[-, violet, thick] (e) to (g);
+
+      \draw[-, red, thick, preaction={draw=blue!50, line width=5pt, opacity=0.2}] (f) to (h);
+
+      \draw[-, blue, thick] (g) to (h);
+    \end{tikzpicture}
+    \caption{Uma coloração própria do grafo e um caminho rainbow.}
+    \label{fig:caminho_rainbow}
+  \end{subfigure}
+  \hfill %
+  \begin{subfigure}{0.45\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \node[main] (a) {};
+      \node[main] (b) [below left of=a] {};
+      \node[main] (c) [above left of=b] {};
+      \node[main] (d) [below left of=b] {};
+      \node[main] (e) [below right of=b] {};
+      \node[main] (f) [right of=a] {};
+      \node[main] (g) [right of=e] {};
+      \node[main] (h) [above right of=g] {};
+
+      \draw[-, blue, thick] (a) to (b);
+      \draw[-, green, thick, opacity=0.2] (a) to (c);
+      \draw[-, red, thick] (a) to (e);
+      \draw[-, orange, thick, opacity=0.2] (a) to (h);
+      \draw[-, violet, thick, opacity=0.2] (a) to (f);
+      
+      \draw[-, red, thick] (b) to (c);
+      \draw[-, green, thick, opacity=0.2] (b) to (d);
+      \draw[-, orange, thick, opacity=0.2] (b) to (e);
+      \draw[-, violet, thick, opacity=0.2] (b) to (h);
+
+      \draw[-, orange, thick, opacity=0.2] (c) to (d);
+      \draw[-, blue, thick] (c) to[bend left=30] (f);
+
+      \draw[-, blue, thick] (d) to (e);
+      \draw[-, red, thick] (d) to[bend right=30] (g);
+
+      \draw[-, green, thick, opacity=0.2] (e) to (h);
+      \draw[-, violet, thick, opacity=0.2] (e) to (g);
+
+      \draw[-, red, thick] (f) to (h);
+
+      \draw[-, blue, thick] (g) to (h);
+    \end{tikzpicture}
+    \caption{Uma cadeia de Kempe com cores azul e vermelho.}
+    \label{fig:cadeia_kempe}
+  \end{subfigure}
+
+  \begin{subfigure}{0.45\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \node[main] (a) {};
+      \node[main] (b) [below left of=a] {};
+      \node[main] (c) [above left of=b] {};
+      \node[main] (d) [below left of=b] {};
+      \node[main] (e) [below right of=b] {};
+      \node[main] (f) [right of=a] {};
+      \node[main] (g) [right of=e] {};
+      \node[main] (h) [above right of=g] {};
+
+      \draw[-, red, thick] (a) to (b);
+      \draw[-, green, thick] (a) to (c);
+      \draw[-, blue, thick] (a) to (e);
+      \draw[-, orange, thick] (a) to (h);
+      \draw[-, violet, thick] (a) to (f);
+      
+      \draw[-, blue, thick] (b) to (c);
+      \draw[-, green, thick] (b) to (d);
+      \draw[-, orange, thick] (b) to (e);
+      \draw[-, violet, thick] (b) to (h);
+
+      \draw[-, orange, thick] (c) to (d);
+      \draw[-, red, thick] (c) to[bend left=30] (f);
+
+      \draw[-, red, thick] (d) to (e);
+      \draw[-, blue, thick] (d) to[bend right=30] (g);
+
+      \draw[-, green, thick] (e) to (h);
+      \draw[-, violet, thick] (e) to (g);
+
+      \draw[-, blue, thick] (f) to (h);
+
+      \draw[-, red, thick] (g) to (h);
+    \end{tikzpicture}
+    \caption{Operação de troca de cores da cadeia de Kempe com cores azul e vermelho.}
+    \label{fig:troca_kempe}
+  \end{subfigure}
+  \caption{Exemplos de coloração própria, caminho rainbow e cadeia de Kempe.}
+  \label{fig:exemplos_coloracao}
+\end{figure}
+
+Dadas duas cores $c_1$ e $c_2$, uma \textit{cadeia de Kempe} com cores $c_1$ e $c_2$ em um grafo aresta colorido $G$ é o subgrafo de $G$ induzido pelas arestas com cores $c_1$ e $c_2$, denotado por $G(c_1, c_2)$. Ilustramos uma cadeia de Kempe na Figura \ref{fig:cadeia_kempe}. Note que, como $G(c_1, c_2)$ é um grafo induzido por dois emparelhamentos, então suas componentes conexas são ou ciclos ou caminhos. A utilidade nas cadeias de Kempe está na observação de que podemos alternar as cores das arestas de $G(c_1, c_2)$, fazendo todas as arestas de cor $c_1$ se tornarem da cor $c_2$ e vice-versa, de forma que a coloração geral do grafo continuará sendo uma coloração própria. Exemplificamos essa operação na Figura \ref{fig:troca_kempe}.
+
+\chapter{Subgrafos \textit{rainbow}}
+
+Neste capítulo, iremos fazer uma revisão sobre os principais resultados combinatórios e algorítmicos sobre o problema de encontrar um subgrafo $H$ em um grafo conexo aresta-colorido $G$ tal que todas as arestas do subgrafo $H$ tenham cores diferentes.
+
+Denotaremos por $c:E(G) \rightarrow \mathbb{N}$ a coloração das arestas do grafo $G$. Dado um subgrafo $H \subseteq G$, denotaremos por $C(H)=\{c(e) \mid e \in E(H)\}$ o conjunto de cores utilizados em $H$. Vamos denotar a quantidade de cores diferentes utilizadas em $H$ por $c(H)=|C(H)|$.
+
+\section{Árvores}
+
+\subsection{Árvoras geradoras muito coloridas}
+
+Antes de tratarmos sobre o problema de encontrar uma árvore geradora \textit{rainbow}, vamos falar sobre o problema de otimização de encontrar uma árvore geradora com a \textit{maior} quantidade de cores distintas possível. Isto é, queremos encontar \[
+  \max \{c(T) \mid T \text{ é árvore geradora de } G\}.
+\]
+
+Este problema foi estudado por \parencite{HajoBroersma1997} que mostraram um algoritmo polinomial para encontrar uma árvore geradora de $G$ com a quantidade máxima de cores. O objetivo desta subseção é apresentar este algoritmo.
+
+Seja $F \subseteq G$ uma floresta geradora de $G$. Vamos dizer que $F$ é \textit{$c$-ótima} se $F$ é rainbow, isto é, $c(F)=|E(F)|$, e não existe outra floresta geradora $F'$ com $c(F') > c(F)$. Podemos pensar em $F$ como uma \textit{floresta geradora máxima rainbow} de $G$. Vamos chamar uma árvore geradora de $G$ com a maior quantidade de cores de \textit{árvore $c$-máxima}. O lema abaixo nos mostra que encontrar uma árvore $c$-máxima de $G$ é equivalente a encontrar uma floresta $c$-ótima de $G$. 
+
+\begin{lemma}{\parencite{HajoBroersma1997}}
+  $T$ é uma árvore $c$-máxima de $G$ se, e somente se, existe uma floresta $c$-ótima $F$ de $G$ tal que $C(T)=C(F)$ e $T$ pode ser obtida adicionando arestas em $F$.
+\end{lemma}
+
+\begin{proof}
+  Suponha primeiro que $T$ é uma árvore $c$-máxima de $G$ com $c(T)=k$. Observe que $T$ possui como subgrafo uma floresta $F$ com $C(F)=C(T)$ e $c(F)=k$. Suponha, por absurdo, que $F$ não é $c$-ótima. Então, existe $F'$ com $c(F) > k$. Porém, como $G$ é conexo, existe $T'$ com $c(T') \geq c(F') > c(T)$, contradizendo a $c$-maximalidade de $T$.
+
+  Agora, suponha que $T$ é obtida adicionando arestas em uma floresta $c$-ótima $F$ de $G$ com $C(T)=C(F)$. Suponha, por absurdo, que $T$ não é $c$-máxima e seja $T'$ uma árvore geradora de $G$ com $c(T') > c(T)$. Então $T$ possui como subgrafo uma floresta $F'$ tal que $c(F')=|E(F')|=c(T') > c(F)$, contradizendo a $c$-otimalidade de $F$.
+\end{proof}
+
+Mostraremos a seguir que o problema de encontrar uma floresta geradora $c$-ótima é equivalente a um problema em matróides.
+
+Um \textit{matróide} é um par $M=(S, \mathcal{I})$, em que $S$ é um conjunto finito de elementos e $\mathcal{I}$ é uma família de subconjuntos de $S$ tal que:
+\begin{enumerate}[label=(\roman*)]
+  \item $\emptyset \in \mathcal{I}$;
+  \item Todos os subconjunto próprios de um conjunto $I \in \mathcal{I}$ também estão em $\mathcal{I}$;
+  \item Se $U, V \in \mathcal{I}$ e $|U|=|V|+1$, então existe um elemento $x \in U \setminus V$ tal que $V \cup \{x\} \in \mathcal{I}$.
+\end{enumerate}
+
+Dados dois matróides definidos sobre o mesmo conjunto de elementos $M_1=(S, \mathcal{I}_1)$ e $M_2=(S, \mathcal{I}_2)$, o problema da interseção máxima busca encontrar $I \in \mathcal{I}_1 \cap \mathcal{I}_2$ com máxima cardinalidade. Existe um algoritmo polinomial para este problema (Teoria dos Matróides). Definiremos a seguir dois matróides sobre o conjunto de arestas $E(G)$ do nosso grafo de entrada que nos ajudarão a encontrar uma floresta geradora $c$-máxima de $G$.
+
+Sejam \[M_1=(E(G), \mathcal{I}_1=\{F \subseteq E(G) \mid (V(G), F) \text{ é uma floresta}\}) \text{ e}\] \[M_2=(E(G), \mathcal{I}_2=\{E' \subseteq E(G) \mid c((V, E'))=|E'|\}).\]
+
+\begin{lemma}{\parencite{HajoBroersma1997}}
+  $M_1$ e $M_2$ são matróides.
+\end{lemma}
+
+\begin{proof}
+  Verificamos que $\emptyset$ está tanto em $\mathcal{I}_1$ quanto em $\mathcal{I}_2$. Também podemos verificar facilmente que a propriedade de hereditariedade é válida para ambos $\mathcal{I}_1$ e $\mathcal{I}_2$. Sejam $F_1, F_2 \subseteq E(G)$ florestas com $|F_1| = |F_2| + 1$. Então existe uma aresta $uv \in F_1$ tal que $u$ e $v$ estão em componentes diferentes de $F_2$. Assim, $F_2 \cup \{e\}$ também é uma floresta e, portanto, pertence a $\mathcal{I}_1$. Além disso, sejam $E_1, E_2 \subseteq \mathcal{I}_2$ com $|E_1| = |E_2| + 1$. Como $c((V, E_1))=|E_1|$ e $c((V, E_2))=|E_2|$, existe uma aresta $e \in E_1$ cuja cor não aparece em nenhuma aresta de $E_2$. Logo $E_2 \cup \{e\}$ também está em $\mathcal{I}_2$.
+\end{proof}
+
+\begin{lemma}{\parencite{HajoBroersma1997}}
+  $F$ é uma floresta $c$-ótima de $G$ se, e somente se, $F$ é uma interseção máxima de $M_1$ e $M_2$.
+\end{lemma}
+
+\begin{proof}
+  Por definição, qualquer conjunto $F \in \mathcal{I}_1 \cap \mathcal{I}_2$ é uma floresta de $G$ com $c(F)=|E(F)|$. Logo, se $F$ é $c$-ótima, então $F$ é uma interseção de $M_1$ e $M_2$. A inversa também é válida.
+\end{proof}
+
+Com isto, basta utilizarmos o algoritmo de matróides para encontrar a interseção máxima, que é polinomial em $|E(G)|$, para encontrar uma floresta $c$-ótima e, em seguida, basta expandi-la adicionando arestas para encontrar uma árvore geradora $c$-máxima de $G$. 
+
+O que vamos fazer no restante desta subseção é tentar traduzir o algoritmo de matróides para uma linguagem mais da teoria dos grafos, obtendo uma caracterização para florestas $c$-ótimas em termos de operações em árvores.
+
+%%%%%
+
+\begin{question}{}{lattice_path_matroid}
+Como podemos explorar Matróides de \textit{Lattice Path} para obter novos resultados relacionados a caminhos \textit{rainbow}?
+\end{question}
+
+\chapter{Cobertura de arestas por diferentes estruturas e subgrafos}
+
+Dado um grafo $G$, dizemos que uma coleção de subconjuntos de arestas $\mathcal{F}=\{E_1, E_2, \dots, E_k \mid E_i \subseteq E(G)\}$ é uma \textit{cobertura das arestas} de $G$ se a união $\bigcup_{i=1}^k E_i$ é exatamente $E(G)$. Note que os subconjuntos não precisam ser disjuntos. No caso em que os conjuntos são dois-a-dois disjuntos, dizemos que $\mathcal{F}$ é uma \textit{decomposição das arestas} de $G$. 
+
+Quando estamos lidando com coberturas e decomposições, em geral queremos encontrar a menor família $\mathcal{F}$ que cobre (decompõe) as arestas de um grafo de tal forma que todos os seus conjuntos obedeça a alguma restrição ou possua alguma propriedade pré-determinada. Por exemplo, podemos pedir que cada conjunto seja um caminho; ou ciclos; ou árvores; ou tenha no máximo $x$ arestas; etc.. Neste capítulo, nós estudaremos coberturas de arestas por diferentes estruturas e subgrafos como esses que mencionamos acima.
+
+\section{O problema do Carteiro Chinês}
+
+No problema do Carteiro Chinês, o objetivo é encontrar o menor passeio fechado em um grafo de modo a cobrir todas as suas arestas, isto é, o passeio passa por cada aresta pelo menos uma vez. Este problema não se encaixa exatamente no conceito de cobertura de arestas que introduzimos anteriormente, porém ele é similar o suficiente e é útil para entender um pouco sobre problemas deste tipo. Esta seção foi baseada no documento \parencite{tjoins_cp}.
+
+Primeiro, veja que quando o grafo é euleriano, então qualquer circuito euleriano no grafo é um passeio do Carteiro Chinês. Lembre-se que:
+
+\begin{theorem}{(Euler)}
+  $G$ é euleriano se, e somente se, o grau de todos os vértices de $G$ é par.
+\end{theorem}
+
+O problema se torna interessante então quando $G$ não é euleriano, ou seja, $G$ possui pelo menos um vértice de grau ímpar. Ou, mais precisamente ainda, $G$ pelo menos dois tais vértices, como afirma a proposição a seguir.
+
+\begin{proposition}{(Folclore)}
+  A quantidade de vértices de grau ímpar em um grafo é sempre par.
+\end{proposition}
+
+\begin{proof}
+  Lembre-se que, pelo lema do aperto de mãos, a soma dos graus de um grafo $G$ é igual a $2|E(G)|$, portanto par. Suponha, por absurdo, que a quantidade de vértices de grau ímpar em $G$ é ímpar. Então, a soma dos graus de tais vértices também é ímpar. Juntando com a soma dos vértices de grau par (que também é par), temos que o somatório dos graus de $G$ é ímpar. Absurdo.
+\end{proof}
+
+Seja $x(e) \geq 1$ a quantidade de vezes que a aresta $e \in E(G)$ aparece em uma solução do Carteiro Chinês no grafo $G$. Note que o multigrafo $M$ obtido a partir de $G$ com o mesmo conjunto de vértices e com $x(e)$ cópias da aresta $e$ é euleriano (o passeio do Carteiro Chinês induz um circuito euleriano). Além disso, veja que se $x(e) > 2$, o multigrafo $M'$ obtido ao fazer $x'(e) = x(e)-2$ também é euleriano e induz uma solução menor do Carteiro Chinês em $G$. Concluímos então que:
+
+\begin{proposition}
+  Em toda solução minimal do Carteiro Chinês em $G$, temos que $x(e) \in \{1, 2\}$ para toda aresta $e \in E(G)$.
+\end{proposition}
+
+Logo, para resolver o Carteiro Chinês, nós queremos encontrar um valor $x(e) \in \{1, 2\}$ para cada aresta do grafo $G$ de modo a minimizar $\sum_{e \in E(G)}c(e)x(e)$, onde $c(e)$ é o custa da aresta $e$ no caso de $G$ ser um grafo ponderado.
+
+Seja $T \subseteq V(G)$ o conjunto de vértices de grau ímpar em $G$. Como vimos anteriormente, $|T|$ é par. Um \textit{$T$-join} é um conjunto $J \subseteq E(G)$ de forma que, no grafo $(V(G), J)$, os vértices de $T$ possuem grau ímpar e todos os demais vértices possuem grau par. 
+
+Em uma solução viável para o Carteiro Chinês, o conjunto $J$ de arestas $e$ tais que $x(e) > 1$ é um $T$-join. Para ver isso, suponha que $J$ não é um $T$-join, então no multigrafo $M$ induzido pela solução, algum vértice terá grau ímpar e, logo, o multigrafo não será euleriano, contradizendo o fato da solução ser viável. Conversamente, se $J$ é um $T$-join, conseguimos obter um multigrafo euleriano repetindo as arestas de $J$: como os vértices de $T$ possuem grau ímpar, no multigrafo eles terão grau par; os demais vértices manterão a paridade. Concluímos então que, para encontrar uma solução ótima para o Carteiro Chinês, basta encontrarmos um $T$-join mínimo.
+
+Para encontrar um $T$-join mínimo, utilizamos o seguinte algoritmo. Para cada $u, v \in T$, seja $P_{uv}$ o caminho mínimo de $u$ para $v$ em $G$ com peso total $w(P_{uv})$. Construa um grafo auxiliar $H$ com $V(H)=T$ e, para cada $u, v \in T$, adicione a aresta $e_{uv}$ com peso $w(P_{uv})$ em $H$. Encontre um emparelhamento máximo de custo mínimo $M$ em $H$ utilizando, por exemplo, o algoritmo Húngaro. Retornamos então o $T$-join $J=\{e \mid e \text{ está em um número ímpar de caminhos } P_{uv}, uv \in M\}$.
+
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}{0.45\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \node[main] (a) {};
+      \node[main, label={above:$t_1$}] (b) [below left of=a] {};
+      \node[main] (c) [above left of=b] {};
+      \node[main] (d) [below left of=b] {};
+      \node[main, label={below:$t_2$}] (e) [below right of=b] {};
+      \node[main, label={above:$t_3$}] (f) [right of=a] {};
+      \node[main, label={right:$t_4$}] (g) [right of=e] {};
+      \node[main] (h) [above right of=g] {};
+
+      \draw[-] (a) to (b);
+      \draw[-] (a) to (c);
+      \draw[-] (a) to[bend left=30] (d);
+      \draw[-] (a) to (e);
+      \draw[-] (a) to (h);
+      \draw[-] (a) to (f);
+      
+      \draw[-] (b) to (c);
+      \draw[-] (b) to (d);
+      \draw[-] (b) to (e);
+      \draw[dashed, thick] (b) to[bend right=30] (e);
+      \draw[-] (b) to (h);
+
+      \draw[-] (c) to (d);
+      \draw[-] (c) to[bend left=30] (f);
+
+      \draw[-] (d) to (e);
+      \draw[-] (d) to[bend right=30] (g);
+      \draw[-] (d) to (h);
+
+      \draw[-] (e) to (h);
+      \draw[-] (e) to (g);
+
+      \draw[-] (f) to (h);
+      \draw[dashed, thick] (f) to[bend left=30] (h);
+
+      \draw[-] (g) to (h);
+      \draw[dashed, thick] (g) to[bend right=30] (h);
+    \end{tikzpicture}
+    \caption{Uma instância do Carteiro Chinês sem pesos e sua solução obtida (multigrafo) pelo algoritmo com custo $|E(G)|+3$.}
+    \label{fig:carteiro_chines}
+  \end{subfigure}
+  \hfill %
+  \begin{subfigure}{0.45\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \node[main, label={left:$t_1$}] (t1) {};
+      \node[main, label={right:$t_2$}] (t2) [right of=t1] {};
+      \node[main, label={right:$t_3$}] (t3) [below of=t2] {};
+      \node[main, label={left:$t_4$}] (t4) [left of=t3] {};
+
+      \draw[-, ultra thick] (t1) edge node[above]{1} (t2);
+      \draw[-] (t1) edge node[left]{2} (t3);
+      \draw[-] (t1) edge node[left]{2} (t4);
+      \draw[-] (t2) edge node[right]{2} (t3);
+      \draw[-] (t2) edge node[right]{1} (t4);
+      \draw[-, ultra thick] (t3) edge node[below]{2} (t4);
+    \end{tikzpicture}
+    \caption{Grafo auxiliar para a instância do Carteiro Chinês com emparelhamento máximo de custo mínimo destacado.}
+    \label{fig:auxiliary_cp_graph}
+  \end{subfigure}
+  \caption{Aplicação do algoritmo de $T$-join do Carteiro Chinês.}
+  \label{fig:exemplo_carteiro_chinês}
+\end{figure}
+
+\section{Florestas}
+
+\section{Caminhos}
+
+Nesta seção, vamos estudar a cobertura das arestas de grafos em que cada conjunto da cobertura forma uma caminho no grafo. O número de cobertura (não-disjunta/irrestrita) por caminhos de um grafo $G$ é o menor número de caminhos necessários para cobrir todas as arestas de $G$, denotado por $\pi^*(G)$. Quando exigimos que os caminhos sejam disjuntos, o número de decomposição por caminhos de um grafo $G$ é denotado por $\pi(G)$.
+
+Estes parâmetros foram introduzidos e inicialmente estudados por \parencite{Harary1970COVERINGAP} e \parencite{HARARY197239}. A seguinte conjectura de Gallai é uma importante conjectura ainda em aberto que tem ligação aos temas que estamos estudando.
+
+\begin{conjecture}{\textcolor{red}{(Gallai, add. ref.)}}
+  Para todo grafo $G$, vale que $\pi(G) \leq \frac{n}{2}$.
+\end{conjecture}
+
+Chung \textcolor{red}{(adicionar ref.)} fez uma conjectura análoga à conjectura de Gallai, porém para $\pi^*(G)$.
+
+\begin{conjecture}{\textcolor{red}{(Chung, add. ref.)}}
+  Para todo grafo $G$, vale que $\pi^*(G) \leq \frac{n}{2}$.
+\end{conjecture}
+
+\subsection{Cobrindo árvores com caminhos}
+
+Para iniciar os nossos estudos, vamos verificar o número de cobertura por caminhos para a classe das árvores. Para uma árvore $T$, denote por $\ell(T)$ o número de folhas de $T$.
+
+\begin{theorem}{\parencite{HARARY197239}}
+  Seja $T$ uma árvore. Então $\pi^*(T)=\lceil \frac{\ell(T)}{2} \rceil$.
+\end{theorem}
+
+\begin{proof}
+  Primeiro, note que cada caminho em uma cobertura de $T$ cobre no máximo~2 folhas de $T$, portanto temos que $\pi^*(T) \geq \lceil \frac{\ell(T)}{2} \rceil$. Vamos mostrar agora a igualdade.
+
+  Sejam $l_1, l_2, \dots, l_{\ell(T)}$ as folhas de $T$ e denote por $P_{i,j}$ o caminho (único) entre $l_i$ e $l_j$ em $T$. Considere uma família $\mathcal{P}$ composta pelos caminhos $P_{i, \ell(T)/2+i}$, para $i\in\{1, \ell(T)/2\}$. Suponha que existe uma aresta $e$ em $T$ que não foi coberta por $\mathcal{P}$. Observe que $\mathcal{P}$ cobre todas as arestas incidentes a folhas de $T$, logo $e$ não é incidente a uma folha. Assim, ao removermos $e$ de $T$, obtemos duas componentes não-triviais $T_1$ e $T_2$. Existem então folhas $l_i, l_j, l_r, l_s$ tais que $P_{i, j} \subset T_1$ e $P_{r, s} \subset T_2$ e ambos estes caminhos estão em $\mathcal{P}$ (por quê?). Remova $P_{i, j}$ e $P_{r, s}$ de $\mathcal{P}$ e adicione $P_{i, r}$ e $P_{j, s}$. A nova família $\mathcal{P}'$ cobre todas as mesmas arestas cobertas anteriormente, além de cobrir também a arestas $e$ que não estava coberta. Repetimos então este procedimento no máximo $n-1$ vezes até que todas as arestas sejam cobertas por $\ell(T)/2$ caminhos.
+\end{proof}
+
+\begin{question}{}{gallais_conj}
+Até o momento em que este documento foi escrito, pelo conhecimento do autor, sabe-se que os melhores limites obtidos são 
+\begin{itemize}
+\item $\pi(G) \leq \frac{2n}{3}$. 
+\item $\pi^*(G) \leq \frac{n}{2} + O(n^{3/4})$.
+\end{itemize}
+
+Podemos melhorar estes limites?
+\end{question}
+
+\textcolor{red}{Comentário: verificar se realmente os resultados acima são os melhores limites obtidos até agora e adicionar referências para eles.}
+
+\textcolor{blue}{Na verdade, já foi provado que a conjectura de Chung (como é chamado o análogo da conjectura de Gallai para coberturas) é verdadeira. Ou seja, $\pi^*(G) \leq \lceil \frac{n}{2} \rceil$.}
+
+\textcolor{red}{Comentário: adicionar resultados e perguntas ao parâmetro análogo para digrafos.}
+
+\subsection{Particionando grafos em $\lceil \frac{n}{2} \rceil$ caminhos ou ciclos}
+
+Lovász \textcolor{red}{(add. ref.)} fez um grande avanço em direção à conjectura de Gallai. Ele provou que, se permitirmos que algumas das estruturas sejam ciclos e não apenas caminhos, conseguimos de fato não somente cobrir, mas até mesmo particionar as arestas do grafo, utilizando apenas $\lceil \frac{n}{2} \rceil$ estruturas. Algumas das consequências da demonstração de Lovász também são muito úteis para o assunto que estamos estudando.
+
+\subsection{Cobrindo os vértices de um grafo usando caminhos mínimos}
+
+Nesta seção, nós iremos estudar um pouco do trabalho de \parencite{isometric_path_cover}. Nele, os autores estudaram o problema de cobrir os vértices (não as arestas) de um grafo através de caminhos mínimos (induzidos). 
+
+\section{Ciclos}
+
+\subsection{Encontrando a base de ciclos de um grafo}
+
+Acreditem ou não, os ciclos de um grafo em certo sentido podem ser vistos como um espaço vetorial! Esse espaço vetorial tem bases: ciclos minimais que geram todos os outros através de uma certa operação. Nesta seção, nós vamos conhecer melhor esse espaço vetorial de ciclos e suas bases, além de um algoritmo para encontrar a base de ciclos de qualquer grafo. Esta seção vai ser baseada em \parencite{cycle_basis}.
+
+\subsection{Cobertura dupla por ciclos}
+
+Uma cobertura é \textit{dupla} se ela cobre cada elemento exatamente duas vezes. Existe uma conjectura chamada de ``conjectura da cobertura dupla por ciclos'', que diz que todo grafo sem pontes admite uma cobertura por ciclos em que cada aresta aparece em exatamente dois ciclos da cobertura \textcolor{red}{(add. ref.)}. Nesta seção, nós vamos ver alguns resultados sobre essa conjectura.
+
+\section{Passeios em digrafos}
+
+\textcolor{red}{Mudar ``trilhas'' para ``passeios'' ao longo desta seção.}
+
+É fácil ver que, em um grafo não-direcionado e conexo, uma única trilha é suficiente para cobrir todas as arestas. Portanto, em qualquer grafo não-direcionado $G$, a quantidade mínima de trilha necessárias para cobrir suas arestas é igual a quantidade de componentes conexas de $G$. O problema de cobrir vértices e arestas por trilhas se torna mais interessante em grafos direcionados, pois as trilhas precisam respeitar a direção dos arcos.
+
+Em um digrafo $D$, dizemos que um vértice $v$ alcança (é alcançado por) um vértice $u$ se existe um caminho de $v$ ($u$) para $u$ ($v$). Dado um conjunto $S \subseteq V(D)$, dizemos que $S$ é um \textit{conjunto de vértices incomparáveis} se, para quaisqer $v, u \in S$, temos que $v$ não alcança $u$. O tamanho de um maior conjunto de vértices incomparáveis de $D$ é denotado por $i_v(D)$. O famoso teorema de Dilworth relaciona o tamanho de uma menor cobertura de vértices por caminhos em um digrafo acíclico $D$ com com $i_v(D)$.
+
+\begin{theorem}{(Dilworth)}
+  Seja $D$ um digrafo acíclico. O menor número de caminhos necessários para cobrir $V(D)$ é igual a $i_v(D)$.
+\end{theorem}
+
+Como em um digrafo acíclico, todo caminho é uma trilha e toda trilha é um caminho, o teorema de Dilworth também nos dá o menor número de trilhas necessárias para cobrir o conjunto de vértices de um digrafo acíclico. \cite{ntafos1979} generalizaram o teorema de Dilworth para digrafos gerais.
+
+\begin{theorem}{\parencite{ntafos1979}}
+  Seja $D$ um digrafo qualquer. O menor número de trilhas necessárias para cobrir $V(D)$ é igual a $i_v(D)$.
+\end{theorem}
+
+\begin{proof}
+  Sejam $V_1, \dots, V_k \subseteq V(D)$ os conjunto de vértices que induzem as componentes fortemente conexas de $D$. Vamos provar o teorema por indução em $k$.
+
+  Quando $k=1$, é fácil ver que uma única trilha consegue cobrir todos os vértices de $D$. Como todos os vértices da única componente fortemente conexa de $D$ alcançam-se mutuamente, temos que $i_v(D)=1$. Logo, para o caso base, o teorema segue.
+
+  Suponha então que o teorema vale para todo $k < n$ e seja $k=n$. Considere agora o digrafo $D'=(V', A')$ com $V'=\{v_1', v_2', \dots, v_k'\}$ e o arco $(v_i', v_j')$ existe em $A'$ se, e somente se, existe um vértice de $V_i$ que alcança algum vértice de $V_j$ em $D$. Note que $D'$ é acíclico. 
+  
+  Seja $S$ um conjunto de vértices incomparáveis de $D'$ tal que $|S|=i_v(D')$. Sejam $D_u(S) = \{v_i' \mid v_i \text{ alcança } S \text{ ou } v_i \in S\}$ e $D_d(S) = \{v_i' \mid v_i' \text{ é alcançado por } S \text{ ou } v_i' \in S\}$. Veja que, em ambos os subgrafos $D[D_u(S)]$ e $D[D_d(S)]$, $S$ também é um conjunto de vértices incomparáveis máximo. Temos dois casos.
+
+  Caso~1: $|D_u(S)| < k$ e $|D_d(S)| < k$. Neste caso, pela hipótese indutiva, temos que existe uma cobertura dos vértices por trilhas de $D'[D_u(S)]$ e de $D'[D_d(S)]$, ambas com tamanho $|S|$. Veja que, em $D'[D_u(S)]$ ($D'[D_d(S)]$), o conjunto é $S$ é um conjunto de fontes (sumidouros). Logo, podemos ``colar'' o fim das trilhas que cobrem $D'[D_u(S)]$ com o início das trilhas que cobrem $D'[D_d(S)]$, obtendo uma cobertura de tamanho $|S|$ para $D'$ que induz uma cobertura de mesmo tamanho para $D$.
+
+  Caso~2: $|D_u(S)|=k=n$ ou $|D_d(S)|=k=n$. Neste caso, $S$ é ou o conjunto de fontes ou o conjunto de sumidouros de $D'$. Em qualquer que seja o caso, sejam $s$ uma fonte e $t$ um sumidouro de $D'$. Pela hipótese indutiva, $D' - \{s, t\}$ possui uma cobertura de vértices por caminhos de tamanho $|S|-1$. Adicionando o caminho $P_{s,t}$, obtemos uma cobertura de tamanho $|S|$ que induz uma cobertura de mesmo tamanho em $D$.
+\end{proof}
+
+\textcolor{red}{Correção: estes resultados do \parencite{ntafos1979} são para \textit{passeios} em digrafos e não trilhas. Lembrar de consertar depois.}
+
+A demonstração acima não nos dá claramente um algoritmo. Resolvemos isto com um algoritmo de fluxo mínimo que descrevemos a seguir. Seja $D'$ o DAG das componentes fortemente conexas de $D$. Adicione a $D'$ dois vértices, $s$ e $t$, tal que $s$ é vizinho de entrada de todas as fontes de $D'$ e $t$ é vizinho de saída de todas as fontes. Para cada vértice original $v$ de $D'$, subdivida-o em $v'$ e $v''$ adicionando o arco $(v', v'')$ de forma que todos os vizinhos de entrada de $v$ serão vizinhos de entrada de $v'$ e todos os vizinhos de saída de $v$ serão vizinhos de saída de $v''$. Para cada arco $(x, y)$ adicione uma restrição de fluxo $r_{x,y}$ tal que
+\begin{equation*}
+  r_{x, y} = \begin{cases}
+    1 & \text{, se } x=v' \text{ e } y=v'' \\
+    0 & \text{ caso contrário. }
+  \end{cases}
+\end{equation*}
+
+Seja $D_f$ este digrafo modificado e com as restrições de fluxo conforme descritas acima. Queremos encontrar um fluxo mínimo $f$ tal que $f(x, y) \geq r_{x,y}$ para cada arco $(x, y) \in A(D_f)$ e que satisfaz as restrições de conservação de fluxo. O valor do fluxo $f$ é dado por $w(f) = \sum_{(x, t) \in A(D_f)} f(x,t)$. O teorema a seguir relaciona o fluxo mínimo em $D_f$ com $i_v(D)$.
+
+\begin{theorem}{\parencite{ntafos1979}}
+  O fluxo mínimo $f$ em $D_f$ tem valor $w(f) = i_v(D)$.
+\end{theorem}
+
+\begin{proof}
+  É fácil ver que $w(f) \geq i_v(D)$, uma vez que cada vértice de um conjunto incomparável deve estar em um caminho diferente entre $s$ e $t$. Por outro lado, seja $\{P_1, \dots, P_{i_v(D)}\}$ uma decomposição em caminhos mínima de $D'$. Observe que, passando uma unidade de fluxo por cada um desses caminhos, obtemos um fluxo que satisfaz as restrições. Logo, $w(f) \leq i_v(D)$, como queríamos. 
+\end{proof}
+
+Para resolver o problema de cobrir arestas, podemos definir um conjunto de arestas incomparáveis de maneira análoga, definindo também o parâmetro $i_e(D)$ que representa o tamanho de um maior tal conjunto em um digrafo $D$. A partir daí, todas as provas seguem similarmente e o algoritmo de fluxo pode ser aplicado diretamente em $D$ adicionando, para cada arco $e$, uma restrição $r_e = 1$, obrigando que cada arco seja coberto pelo fluxo mínimo.
+
+\chapter{Fronteira, Contorno e Periferia}
+
+Neste capítulo, nós iremos estudar um pouco sobre tipos de vértices extremos, conceitos que surgiram nas áreas de Geometria Computacional e de Convexidade em Grafos. Mais especificamente iremos estudar sobre: vértices de fronteira, de contorno e periféricos, suas relações e propriedades em diferentes grafos. Ao longo do capítulo, vamos estabelecendo um pouco mais as ligações entre estes tipos de vértices e os demais assuntos que temos estudado.
+
+A \textit{distância} entre dois vértices $u$ e $v$ em um grafo $G$, denotada por $d_G(u,v)$ (ou simplesmente $d(u, v)$ quando o grafo está subentendido), é o comprimento de um menor caminho de $u$ para $v$ em $G$. A \textit{ecentricidade} de um vértice $v$ em $G$, denotada por $e_G(v)$ (ou $e(v)$), é a maior distância entre $v$ e algum outro vértice de $G$. A menor ecentricidade dentre todos os vértices de $G$ é o \textit{raio} de $G$, denotado por $rad(G)$. A maior ecentricidade dentre todos os vértices de $G$ é o \textit{diâmetro} de $G$, denotado por $diam(G)$. Um vértice $v$ é dito \textit{central} em $G$ se $e(v) = rad(G)$, e é dito \textit{periférico} se $e(v)=diam(G)$. O conjunto de vértices centrais de um grafo $G$ é chamado de \textit{centro} de $G$ e denotado por $Cen(G)$, enquanto que o conjunto de vértices periféricos é chamado de \textit{periferia} de $G$ e denotado por $Per(G)$. Um vértice $v$ é chamado de \textit{vértice de fronteira} de $G$ se existe $u \in V(G)$ tal que $d(v, u) \geq d(w, u)$ para todo $w \in N_G(v)$. O conjunto de vértices de fronteira de $G$ é denotado por $\partial(G)$.
+
+\begin{proposition}{\parencite{CHARTRAND200325}}
+O seguinte vale para todo grafo $G$:
+\begin{enumerate}
+  \item $|Per(G)|\geq 2$.
+  \item $Per(G) \subseteq \partial(G) \subseteq V(G)$;
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+  Seja $P_1$ um maior caminho mínimo em $G$. Sejam $u$ e $v$ as extremidades deste caminho. Então $u$ e $v$ são periféricos. Logo, segue que $|Per(G)| \geq 2$. Além disso, é claro que se $u$ é um vértice periférico, $u$ é um vértice de fronteira, pois sabemos que $e(u) = diam(G)$.
+\end{proof}
+
+\begin{question}{}{boundary_classification}
+Em quais classes de grafos sempre existe um vértice $v \in \partial(G)$ ($\text{Ct}(G), \text{Per}(G)$) tal que $\partial(G-v) \leq \partial(G)$ ($\text{Ct}(G-v) \leq \text{Ct}(G)$, $\text{Per}(G-v)\leq \text{Per}(G)$)? 
+
+Grafos com tal propriedade podem ser úteis para aplicar indução, então seria interessante caracterizar estas classes.
+\end{question}
+
+\section{Grafos cordais e vértices extremos}
+
+\begin{question}{}{chordal_extreme}
+Como podemos caracterizar cada tipo de vértice $\partial(G)$, $Per(G)$, $Ecc(G)$ e $Ct(G)$ em termos da árvore de cliques de $G$, sendo $G$ cordal?
+
+Como essas caracterizações podem nos ajudar a encontrar coberturas para grafos cordais?
+\end{question}
+
+\chapter{Tópicos em Matróides e Coberturas}
+
+Como vimos anteriormente, encontrar uma árvore geradora mais colorida de um grafo $G$ é um problema polinomial. E uma das razões para isso é porque os subconjuntos $F \subseteq E(G)$ tais que $F$ é acíclico em $G$ definem uma matróide, assim como os conjuntos $R \subseteq E(G)$ tais que $R$ é \textit{rainbow} em $G$. E, como determinar o maior conjunto independente na interseção de duas matróides pode ser feito em tempo polinomial, também conseguimos encontrar a maior floresta \textit{rainbow} de $G$ em tempo polinomial, o que por sua vez nos permite facilmente encontrar uma árvore geradora maximalmente colorida em $G$. Este capítulo busca explorar ideias matroidais para resolver problemas de cobertura e problemas que envolvem estruturas \textit{rainbow}, principalmente caminhos \textit{rainbow}.
+
+\section{Algumas famílias (potencialmente) úteis de matróides}
+
+Nesta seção, busco listar algumas das famílias de matróides que, a meu ver (ou de acordo com minha intuição), tem potencial para serem utilizadas nos tipos de problemas que temos lidado.
+
+\subsection{Matróides de \textit{Lattice Path}}
+
+Iremos utilizar a definição de \parencite{bonin_de_mier}. Uma outra boa e útil referência sobre este tipo de matróide é \parencite{lattice_path_matroid_union}. Algumas outras propriedades úteis sobre este tipo de matróide podem ser encontradas em \parencite{BONIN2006701}.
+
+Sejam $P=p_1p_2 \dots p_{m+r}$ e $Q=q_1q_2 \dots q_{m+r}$ dois caminhos em uma grade tal que $P$ nunca fica abaixo de $Q$. Seja $M[P, Q]$ a matróide cujo conjunto base é $[m + r]$ e seus conjuntos independentes são subconjuntos $X \subseteq [m+r]$. Cada conjunto independente $X$ representa um caminho $P(X)$ na região da grade entre $Q$ e $P$ tal que $P(X)$ é a string $s_1s_2 \dots s_{m+r}$ em que:
+
+\begin{equation*}
+  s_i = \begin{cases}
+    C \text{ (cima)}, & \text{ se } i \in X \\
+    D \text{ (direita)}, & \text{ se } i \not\in X.
+  \end{cases}
+\end{equation*}
+
+\textbf{Por que pode ser útil?} Podemos traduzir um grafo de intervalo para matróides de \textit{lattice path} \textcolor{red}{\textit{(Vamos provar isso logo?)}}. Com isto, podemos utilizar resultados conhecidos em matróides e também tentar adaptar ou traduzir resultados matroidais específicos para a linguagem da teoria dos grafos. Um outro caminho que pode ser explorado é se existe algum tipo de correspondência entre grafos bipartidos completos e matróides de \textit{lattice path}. É possível que exista matróides de \textit{lattice path} ainda mais específicas para grafos completos, como as matróides Catalãs.
+
+\subsection{Matróides Gamóides}
+
+Seja $D=(V, A)$ um grafo direcionado e $X, Y \subseteq V(D)$. Dizemos que $X$ \textit{é conectado a} $Y$ em $D$ se existem $|Y|$ caminhos vértice-disjuntos de $X$ para $Y$. (Os caminhos são inteiramente vértice-disjuntos, não apenas \textit{internamente} vértice-disjuntos.)
+
+Seja $D=(V, A)$ e $S, T \subseteq V(D)$. Uma matróide gamóide é uma matróide definida sobre o conjuto base $T$ cujos conjuntos independentes são os subconjuntos $X \subseteq T$ tais que $S$ é conectada a $X$ em $G$.
+
+\textbf{Por que pode ser útil?} Talvez possamos aplicar gamóides para encontrar sistemas de caminhos disjuntos que cobrem grafos ou digrafos. É interessante também procurar alguma relação com problemas de linkage e subdivisão de digrafos. Talvez uma boa referência para saber mais sobre isso seja \parencite{gammoids_coloring} e o livro \parencite{oxley_matroids}.
+
+\subsection{Matróides Gráficas}
+
+Estas são as matróides mais simples que conhecemos relacionadas à grafos: a matróide definida sobre o conjunto de arestas de um grafo cujos conjuntos independentes são subconjuntos de arestas acíclicos.
+
+\section{Cobertura de matróides}
+
+Existe surpreendentemente poucos trabalhos sobre a quantidade mínima de caminhos para cobrir as arestas de um grafo ou, como definimos previamente, o número irrestrito de caminhos de um grafo. Se de fato for possível traduzir um grafo de intervalos (próprio...) para uma matróide de \textit{lattice path}, podemos utilizar os resultados de coloração de matróides, incluindo o Algoritmo de Edmonds para coloração, para encontrar a menor quantidade de caminhos para cobrir as arestas de grafos de tal classe. É isto que tentaremos fazer nesta seção.
+
+\subsection{A correspondência entre caminhos crescentes em um grafo de intervalos próprios e uma matróide de \textit{lattice path}}
+
+Para mostrar que podemos representar caminhos crescentes em um grafo de intervalos próprios como uma matróide de \textit{lattice path}, vamos precisar da seguinte caracterização de matróides de \textit{lattice path}.
+
+\begin{lemma}[\cite{oxley_matroids, bonin_de_mier}]
+  \label{lem:tranversal_lattice}
+  Uma matróide de \textit{transversal} é uma matróide de \textit{lattice path} se, e somente se, existe uma ordenação do seu conjunto base e uma sequência de intervalos $(N_1, N_2, \dots, N_r)$ desta ordenação com extremidades $N_i = [l_i, g_i]$ tal que $l_1 \leq l_2 \leq \dots \leq l_r$ e $g_1 \leq g_2 \leq \dots \leq g_r$.
+\end{lemma}
+
+\begin{proof}
+  \textcolor{red}{Adicionar prova aqui...}
+\end{proof}
+
+\begin{proposition}[$\smallstar$]
+  \label{theo:proper_interval_lpm}
+  Seja $G$ um grafo conexo de intervalos próprios definido pela família de intervalos $\mathcal{I}$. Existe uma matróide de \textit{lattice path} $M_G$ e uma função sobrejetiva que mapeia cada conjunto independente de $M_G$ em um caminho crescente em $G$. 
+\end{proposition}
+
+\begin{proof}
+  Como $G$ é um grafo de intervalos próprios, podemos ordenar os intervalos de $\mathcal{I}$, obtendo uma sequência $(I_i = [s_i, t_i])_{i \in [n]}$ de intervalos tal que $s_1 < s_2 < \dots < s_n$ e $t_1 < t_2 < \dots < t_n$. Chame de $v_i$ o vértice associado ao intervalo $I_i$ nesta sequência. Além disso, seja $N_i = \{v_iv_j \mid v_j \in N_G(v_i), i < j\}$. Defina $M_G$ como a matróide de \textit{transversal} cujo conjunto base é $E(G)$ e apresentação $(N_i)_{i \in [n-1]}$ (podemos escrever $i \in [n-1]$ e não $i \in [n]$ porque $N_n$ é vazio). Considere então uma ordenação lexicográfica de $E(G)$ em que $v_1 < v_2 < \dots < v_n$, cujo resultado é uma sequência $S = (e_1, e_2, \dots, e_{m})$. Veja que, como $G$ é um grafo de intervalos próprio, cada $N_i$ é um intervalo de $S$. Além disso, pela forma como definimos cada $N_i$, suas extremidades também satisfazem o Lema \ref{lem:tranversal_lattice}. Portanto, concluímos que $M_G$ é, de fato, uma matróide de \textit{lattice path}.
+
+  Agora, seja $P = (v_{u_1},v_{u_2}, v_{u_3}, \dots, v_{u_k})$ um caminho crescente em $G$, ou seja, $u_1 < u_2 < u_3 < \dots \leq u_k$. Então, o conjunto de arestas $\{u_1u_2, u_2u_3, \dots, u_{k-1}u_k\}$ é um \textit{transversal} parcial de $(N_i)_{i \in [n-1]}$ e, portanto, é um conjunto independente de $M_G$. Conversamente, seja $P$ um \textit{transversal} de $(N_i)_{i \in [n-1]}$. Se $P$ é um transversal perfeito, então $P$ corresponde a uma sequência de $n-1$ arestas $(e_1, e_2, \dots, e_{n-1})$ tal que $e_i = v_iv_j$ com $i < j$ e $v_j \in N_G(v_i)$, portanto $P$ corresponde a um caminho crescente Hamiltoniano em $G$. Caso $P$ seja um \textit{transversal} parcial, então $P$ é um ``esqueleto'' de um caminho Hamiltoniano de $G$, ou seja, existe um caminho Hamiltoniano $P'$ em $G$ que usa exatamente as arestas de $P$. Concluimos então que o Teorema segue. 
+\end{proof}
+
+A seguir, damos um exemplo da transformação de um grafo de intervalos próprio para uma matróide de \textit{lattice path}. Seja a família de intervalos $\mathcal{I} = \{ [1,3], [2,6], [4,7], [5,8], [6,9] \}$ definindo o grafo de intervalos próprios $G$ representado na Figura \ref{fig:kite_graph}. Além disso, seja a ordenação lexicográfica de $E(G)$ dada por $(e_1 = v_1v_2, e_2=v_2v_3, e_3=v_2v_4, e_4=v_2v_5, e_5=v_3v_4, e_6=v_3v_5, e_7=v_4v_5)$. A representação da matróide $M_G$ são então os intervalos $N_1 = [1,1]$, $N_2=[2, 4]$, $N_3=[5, 6]$, e $N_4 = [7,7]$. Ilustramos $M_G$ na Figura \ref{fig:rep_lpm}.
+
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}{0.35\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \node[main, label={left:$v_1$}] (a) {};
+      \node[main, label={above:$v_2$}] (b) [right of=a] {};
+      \node[main, label={above:$v_3$}] (c) [above right of=b] {};
+      \node[main, label={above:$v_4$}] (d) [below right of=c] {};
+      \node[main, label={below:$v_5$}] (e) [below left of=d] {};
+
+      \draw[-, blue, ultra thick] (a) -- (b);
+      \draw[-, red, ultra thick, dashed] (a) -- (b);
+      \draw[-, blue, ultra thick] (b) -- (c);
+      \draw[-, red, ultra thick, dashed] (b) -- (c);
+      \draw[-] (b) -- (d);
+      \draw[-] (b) -- (e);
+      \draw[-, blue, ultra thick] (c) -- (d);
+      \draw[-, red, ultra thick, dashed] (c) -- (e);
+      \draw[-, blue, ultra thick] (d) -- (e);
+      \draw[-, red, ultra thick, dashed] (d) -- (e);
+    \end{tikzpicture}
+    \caption{Grafo pipa de intervalos próprios $G$.}
+    \label{fig:kite_graph}
+  \end{subfigure} %
+  \hfill
+  \begin{subfigure}{0.5\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=0.7]
+      \draw[step=1cm,gray!30,very thin] (0,0) grid (7,4);
+
+      % Axes
+      \draw[->] (0,0) -- (7.5,0) node[right] {$x$};
+      \draw[->] (0,0) -- (0,4.5) node[above] {$y$};
+
+      % Upper path
+      \draw[very thick,blue]
+      (1,0) --
+      (1,1) --
+      (2,1) --
+      (2,2) --
+      (3,2) --
+      (4,2) --
+      (5,2) --
+      (5,3) --
+      (6,3) --
+      (7,3) --
+      (7,4);
+
+      % Lower path
+      \draw[very thick,red]
+      (1,0) --
+      (1,1) --
+      (2,1) --
+      (3,1) --
+      (4,1) --
+      (4,2) --
+      (5,2) --
+      (6,2) --
+      (6,3) --
+      (7,3) --
+      (7,4);
+
+      % Mark start and end
+      \fill (1,0) circle (2pt) node[below] {$(1,0)$};
+      \fill (7,4) circle (2pt) node[above] {$(7,4)$};
+
+    \end{tikzpicture}
+    \caption{Uma representação da matróide de \textit{lattice paths} definida pelos caminhos crescentes de $G$.}
+    \label{fig:rep_lpm}
+  \end{subfigure}
+
+  \caption{Ilustração de um grafo de intervalos próprios $G$, a matróide de \textit{lattice paths} como descrita no Teorema \ref{theo:proper_interval_lpm} e alguns caminhos crescentes representados nela.}
+  \label{fig:proper_matroid}
+\end{figure}
+
+\subsection{O Algoritmo de Edmonds para coloração de matróides}
+
+\subsection{Cobrindo as arestas de um grafo de intervalos próprio por caminhos}
+
+\section{Interseção de matróides}
+
+Em livros sobre Teoria das Matróides, comumente existe um capítulo ou seção inteiramente dedicado à interseção de matróides. Dentre os resultados relevantes sobre este tema, está um outro algoritmo de Edmonds para encontrar o conjunto independente de maior cardinalidade na interseção de duas matróides. 
+
+Nesta seção, teremos dois objetivos principais. O primeiro é resolver o problema do \textsc{$k$-Caminho Rainbow} ou, se desejar, \textsc{Caminho Rainbow Mais Longo}. Este é um problema $\NP$-completo, uma vez que generaliza o problema \textsc{Caminho Hamiltoniano}. Nós tentaremos resolver o problema para os grafos de intervalo próprio traduzindo as ideias do algoritmo de Edmonds para encontrar o maior conjunto independente na interseção de duas matróides em um algoritmo completamente na linguagem da teoria dos grafos. 
+
+O segundo objetivo é provavelmente mais ambicioso. Um resultado de \parencite{matroid_simplicial_complex} afirma que, para cobrir a interseção de duas matróides $M_1$ e $M_2$, precisamos no máximo de duas vezes mais conjuntos independetes que a maior quantidade de conjuntos independentes necessários para cobrir $M_1$ ou $M_2$. Explicitamente: \[
+\chi(M_1 \cap M_2) \leq 2 \cdot max(\chi(M_1), \chi(M_2)).
+\] Também tentaremos adaptar as ideias de \parencite{matroid_simplicial_complex} para uma linguagem de teoria dos grafos durante o nosso percurso para chegar a este objetivo.
+
+\subsection{O problema do \textsc{$k$-Caminho Rainbow}}
+
+\subsection{Cobrindo um grafo de intervalos próprio colorido em arestas por caminhos rainbow}
+
+\printbibliography
+
+\end{document}
+

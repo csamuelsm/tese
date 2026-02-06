@@ -1,0 +1,627 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nyt/global//global/global}
+    \entry{matroid_simplicial_complex}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=96dfd036c9cefb71d7a9fd614bb32a27}{%
+           family={Aharoni},
+           familyi={A\bibinitperiod},
+           given={Ron},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d3581638ac83bc119f02883d49537bfc}{%
+           family={Berger},
+           familyi={B\bibinitperiod},
+           given={Eli},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {American Mathematical Society}%
+      }
+      \strng{namehash}{4b3ea7b55389a9933978f96074ef8190}
+      \strng{fullhash}{4b3ea7b55389a9933978f96074ef8190}
+      \strng{bibnamehash}{4b3ea7b55389a9933978f96074ef8190}
+      \strng{authorbibnamehash}{4b3ea7b55389a9933978f96074ef8190}
+      \strng{authornamehash}{4b3ea7b55389a9933978f96074ef8190}
+      \strng{authorfullhash}{4b3ea7b55389a9933978f96074ef8190}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{00029947}
+      \field{journaltitle}{Transactions of the American Mathematical Society}
+      \field{number}{11}
+      \field{title}{The Intersection of a Matroid and a Simplicial Complex}
+      \field{urlday}{2}
+      \field{urlmonth}{2}
+      \field{urlyear}{2026}
+      \field{volume}{358}
+      \field{year}{2006}
+      \field{urldateera}{ce}
+      \field{pages}{4895\bibrangedash 4917}
+      \range{pages}{23}
+      \verb{urlraw}
+      \verb http://www.jstor.org/stable/3845406
+      \endverb
+      \verb{url}
+      \verb http://www.jstor.org/stable/3845406
+      \endverb
+    \endentry
+    \entry{gammoids_coloring}{thesis}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=c00d65571cec9113e1a74673b28d4687}{%
+           family={Albrecht},
+           familyi={A\bibinitperiod},
+           given={Immanuel},
+           giveni={I\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{institution}{1}{%
+        {FernUniversität in Hagen}%
+      }
+      \strng{namehash}{c00d65571cec9113e1a74673b28d4687}
+      \strng{fullhash}{c00d65571cec9113e1a74673b28d4687}
+      \strng{bibnamehash}{c00d65571cec9113e1a74673b28d4687}
+      \strng{authorbibnamehash}{c00d65571cec9113e1a74673b28d4687}
+      \strng{authornamehash}{c00d65571cec9113e1a74673b28d4687}
+      \strng{authorfullhash}{c00d65571cec9113e1a74673b28d4687}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Contributions to the Problems of Recognizing and Coloring Gammoids}
+      \field{type}{phdthesis}
+      \field{year}{2018}
+    \endentry
+    \entry{bonin_de_mier}{article}{}
+      \name{author}{3}{}{%
+        {{un=1,uniquepart=given,hash=46e48a8687239ddf9fe5dbc78fd5374e}{%
+           family={Bonin},
+           familyi={B\bibinitperiod},
+           given={Joseph},
+           giveni={J\bibinitperiod},
+           givenun=1}}%
+        {{un=0,uniquepart=base,hash=f745f6156a9aedaa7c7da418e8664d3a}{%
+           family={Mier},
+           familyi={M\bibinitperiod},
+           given={Anna},
+           giveni={A\bibinitperiod},
+           givenun=0,
+           prefix={de},
+           prefixi={d\bibinitperiod},
+           prefixun=0}}%
+        {{un=0,uniquepart=base,hash=f009f3d70a22c25ac593ae45b7bc3da9}{%
+           family={Noy},
+           familyi={N\bibinitperiod},
+           given={Marc},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {USA}%
+      }
+      \list{publisher}{1}{%
+        {Academic Press, Inc.}%
+      }
+      \strng{namehash}{3ef2b8f31ab0723340cc0764ce0f2f7d}
+      \strng{fullhash}{3ef2b8f31ab0723340cc0764ce0f2f7d}
+      \strng{bibnamehash}{3ef2b8f31ab0723340cc0764ce0f2f7d}
+      \strng{authorbibnamehash}{3ef2b8f31ab0723340cc0764ce0f2f7d}
+      \strng{authornamehash}{3ef2b8f31ab0723340cc0764ce0f2f7d}
+      \strng{authorfullhash}{3ef2b8f31ab0723340cc0764ce0f2f7d}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Fix two lattice paths P and Q from (0,0) to (m, r) that use East and North steps with P never going above Q. We show that the lattice paths that go from (0,0) to (m, r) and that remain in the region bounded by P and Q can be identified with the bases of a particular type of transversal matroid, which we call a lattice path matroid. We consider a variety of enumerative aspects of these matroids and we study three important matroid invariants, namely the Tutte polynomial and, for special types of lattice path matroids, the characteristic polynomial and the β invariant. In particular, we show that the Tutte polynomial is the generating function for two basic lattice path statistics and we show that certain sequences of lattice path matroids give rise to sequences of Tutte polynomials for which there are relatively simple generating functions. We show that Tutte polynomials of lattice path matroids can be computed in polynomial time. Also, we obtain a new result about lattice paths from an analysis of the β invariant of certain lattice path matroids.}
+      \field{issn}{0097-3165}
+      \field{journaltitle}{J. Comb. Theory Ser. A}
+      \field{month}{10}
+      \field{number}{1}
+      \field{title}{Lattice path matroids: enumerative aspects and Tutte polynomials}
+      \field{volume}{104}
+      \field{year}{2003}
+      \field{pages}{63\bibrangedash 94}
+      \range{pages}{32}
+      \verb{doi}
+      \verb 10.1016/S0097-3165(03)00122-5
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1016/S0097-3165(03)00122-5
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1016/S0097-3165(03)00122-5
+      \endverb
+      \keyw{β invariant,Catalan number,Tutte polynomial,broken circuit complex,lattice path,transversal matroid}
+    \endentry
+    \entry{BONIN2006701}{article}{}
+      \name{author}{2}{}{%
+        {{un=1,uniquepart=given,hash=a22f73e1d4bb71bfc6bf150b003bddd4}{%
+           family={Bonin},
+           familyi={B\bibinitperiod},
+           given={Joseph\bibnamedelima E.},
+           giveni={J\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=1}}%
+        {{un=0,uniquepart=base,hash=541ac522fc0b5e01b83fd72db7e6aa42}{%
+           family={{de Mier}},
+           familyi={d\bibinitperiod},
+           given={Anna},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{833624eec2c884eddaf503aefb5d1685}
+      \strng{fullhash}{833624eec2c884eddaf503aefb5d1685}
+      \strng{bibnamehash}{833624eec2c884eddaf503aefb5d1685}
+      \strng{authorbibnamehash}{833624eec2c884eddaf503aefb5d1685}
+      \strng{authornamehash}{833624eec2c884eddaf503aefb5d1685}
+      \strng{authorfullhash}{833624eec2c884eddaf503aefb5d1685}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This paper studies structural aspects of lattice path matroids. Among the basic topics treated are direct sums, duals, minors, circuits, and connected flats. One of the main results is a characterization of lattice path matroids in terms of fundamental flats, which are special connected flats from which one can recover the paths that define the matroid. We examine some aspects related to key topics in the literature of transversal matroids and we determine the connectivity of lattice path matroids. We also introduce notch matroids, a minor-closed, dual-closed subclass of lattice path matroids, and we find their excluded minors.}
+      \field{issn}{0195-6698}
+      \field{journaltitle}{European Journal of Combinatorics}
+      \field{number}{5}
+      \field{title}{Lattice path matroids: Structural properties}
+      \field{volume}{27}
+      \field{year}{2006}
+      \field{pages}{701\bibrangedash 738}
+      \range{pages}{38}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.ejc.2005.01.008
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S0195669805000296
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S0195669805000296
+      \endverb
+    \endentry
+    \entry{HajoBroersma1997}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=dae5f847841b43ba027b77b237b1a411}{%
+           family={Broersma},
+           familyi={B\bibinitperiod},
+           given={Hajo},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=5351eb8348c533733be34a26a37b5ccf}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Xueliang},
+           giveni={X\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {eng}%
+      }
+      \strng{namehash}{e8c53ac7e64b23dda63bea946d3a0b42}
+      \strng{fullhash}{e8c53ac7e64b23dda63bea946d3a0b42}
+      \strng{bibnamehash}{e8c53ac7e64b23dda63bea946d3a0b42}
+      \strng{authorbibnamehash}{e8c53ac7e64b23dda63bea946d3a0b42}
+      \strng{authornamehash}{e8c53ac7e64b23dda63bea946d3a0b42}
+      \strng{authorfullhash}{e8c53ac7e64b23dda63bea946d3a0b42}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Given a graph G = (V,E) and a (not necessarily proper) edge-coloring of G, we consider the complexity of finding a spanning tree of G with as many different colors as possible, and of finding one with as few different colors as possible. We show that the first problem is equivalent to finding a common independent set of maximum cardinality in two matroids, implying that there is a polynomial algorithm. We use the minimum dominating set problem to show that the second problem is NP-hard.}
+      \field{journaltitle}{Discussiones Mathematicae Graph Theory}
+      \field{number}{2}
+      \field{title}{Spanning trees with many or few colors in edge-colored graphs}
+      \field{volume}{17}
+      \field{year}{1997}
+      \field{pages}{259\bibrangedash 269}
+      \range{pages}{11}
+      \verb{urlraw}
+      \verb http://eudml.org/doc/270702
+      \endverb
+      \verb{url}
+      \verb http://eudml.org/doc/270702
+      \endverb
+      \keyw{edge-coloring; spanning tree; matroid (intersection); complexity; NP-complete; NP-hard; polynomial algorithm; (minimum) dominating set; matroids; dominating set}
+    \endentry
+    \entry{CHARTRAND200325}{article}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=4cbfcd436aad61ff88fd10aa44eef0ab}{%
+           family={Chartrand},
+           familyi={C\bibinitperiod},
+           given={Gary},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f48d5b3daaa0a169ca2a83bc395c210c}{%
+           family={Erwin},
+           familyi={E\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ec4c495ba3523bd9c5829a55dccb5195}{%
+           family={Johns},
+           familyi={J\bibinitperiod},
+           given={Garry\bibnamedelima L.},
+           giveni={G\bibinitperiod\bibinitdelim L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=28b6504d56c03d7d44c0ecca06ae0869}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Ping},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{a7b4a4baed4b3a5fe6c511e8427aeffa}
+      \strng{fullhash}{6251ac8736da6956dd13fb1dd64c4d7b}
+      \strng{bibnamehash}{a7b4a4baed4b3a5fe6c511e8427aeffa}
+      \strng{authorbibnamehash}{a7b4a4baed4b3a5fe6c511e8427aeffa}
+      \strng{authornamehash}{a7b4a4baed4b3a5fe6c511e8427aeffa}
+      \strng{authorfullhash}{6251ac8736da6956dd13fb1dd64c4d7b}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0012-365X}
+      \field{journaltitle}{Discrete Mathematics}
+      \field{number}{1}
+      \field{title}{Boundary vertices in graphs}
+      \field{volume}{263}
+      \field{year}{2003}
+      \field{pages}{25\bibrangedash 34}
+      \range{pages}{10}
+      \verb{doi}
+      \verb https://doi.org/10.1016/S0012-365X(02)00567-8
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S0012365X02005678
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S0012365X02005678
+      \endverb
+      \keyw{Peripheral vertex,Eccentric vertex,Boundary vertex}
+    \endentry
+    \entry{tjoins_cp}{misc}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=e64e05b60e285d389253f4c0e695df74}{%
+           family={Chekuri},
+           familyi={C\bibinitperiod},
+           given={Chandra},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{e64e05b60e285d389253f4c0e695df74}
+      \strng{fullhash}{e64e05b60e285d389253f4c0e695df74}
+      \strng{bibnamehash}{e64e05b60e285d389253f4c0e695df74}
+      \strng{authorbibnamehash}{e64e05b60e285d389253f4c0e695df74}
+      \strng{authornamehash}{e64e05b60e285d389253f4c0e695df74}
+      \strng{authorfullhash}{e64e05b60e285d389253f4c0e695df74}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://courses.grainger.illinois.edu/cs598csc/sp2010/Lectures/Lecture13.pdf}}
+      \field{month}{3}
+      \field{note}{Acesso em 16 de janeiro de 2026.}
+      \field{title}{$T$-joins and applications}
+      \field{year}{2010}
+    \endentry
+    \entry{isometric_path_cover}{misc}{}
+      \name{author}{9}{}{%
+        {{un=0,uniquepart=base,hash=591d01f5b11be8fafac80a0cfe364cd8}{%
+           family={Foucaud},
+           familyi={F\bibinitperiod},
+           given={Florent},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f39f26705bd4be49b04bcbadaef00ca9}{%
+           family={Chakraborty},
+           familyi={C\bibinitperiod},
+           given={Dibyayan},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1c59e94b385a7189b95121aca9f3afff}{%
+           family={Dailly},
+           familyi={D\bibinitperiod},
+           given={Antoine},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=49cd1eb5442c2165c9e856ea9866bf8d}{%
+           family={Das},
+           familyi={D\bibinitperiod},
+           given={Sandip},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=2e93153eedc63531985dda50d4281fa2}{%
+           family={Gahlawat},
+           familyi={G\bibinitperiod},
+           given={Harmender},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=5b827a7f5b0e64e5efa48ff166a55be7}{%
+           family={Ghosh},
+           familyi={G\bibinitperiod},
+           given={Subir\bibnamedelima Kumar},
+           giveni={S\bibinitperiod\bibinitdelim K\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=dbf82f518e983b9b99e3cd828f3060e7}{%
+           family={Dumas},
+           familyi={D\bibinitperiod},
+           given={Mael},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6e6d3351d9d7bf9403468eb52586ac7d}{%
+           family={Perez},
+           familyi={P\bibinitperiod},
+           given={Anthony},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9c32f44b00f0c5e66827640b22eb8527}{%
+           family={Todinca},
+           familyi={T\bibinitperiod},
+           given={Ioan},
+           giveni={I\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{4e14d9961f807e04321cf0e20745e9b0}
+      \strng{fullhash}{575ac00fd4a2b3f45cf60588b112ff00}
+      \strng{bibnamehash}{4e14d9961f807e04321cf0e20745e9b0}
+      \strng{authorbibnamehash}{4e14d9961f807e04321cf0e20745e9b0}
+      \strng{authornamehash}{4e14d9961f807e04321cf0e20745e9b0}
+      \strng{authorfullhash}{575ac00fd4a2b3f45cf60588b112ff00}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://perso.limos.fr/ffoucaud/Talks/Slides/foucaud_IsometricPathCover_01.2023.pdf}}
+      \field{note}{Acesso em 03 de fevereiro de 2026.}
+      \field{title}{Covering a graph using shortest paths}
+      \field{year}{2023}
+    \endentry
+    \entry{Harary1970COVERINGAP}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=e3160b3da4830dc2704b52726168a61f}{%
+           family={Harary},
+           familyi={H\bibinitperiod},
+           given={Frank},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{e3160b3da4830dc2704b52726168a61f}
+      \strng{fullhash}{e3160b3da4830dc2704b52726168a61f}
+      \strng{bibnamehash}{e3160b3da4830dc2704b52726168a61f}
+      \strng{authorbibnamehash}{e3160b3da4830dc2704b52726168a61f}
+      \strng{authornamehash}{e3160b3da4830dc2704b52726168a61f}
+      \strng{authorfullhash}{e3160b3da4830dc2704b52726168a61f}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Annals of the New York Academy of Sciences}
+      \field{title}{Covering and Packing in Graphs, I.}
+      \field{volume}{175}
+      \field{year}{1970}
+      \verb{urlraw}
+      \verb https://api.semanticscholar.org/CorpusID:84767097
+      \endverb
+      \verb{url}
+      \verb https://api.semanticscholar.org/CorpusID:84767097
+      \endverb
+    \endentry
+    \entry{HARARY197239}{incollection}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=e3160b3da4830dc2704b52726168a61f}{%
+           family={Harary},
+           familyi={H\bibinitperiod},
+           given={Frank},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=7d0dfe03df70334f5fa5f1c46b6bac17}{%
+           family={Schwenk},
+           familyi={S\bibinitperiod},
+           given={Allen\bibnamedelima J.},
+           giveni={A\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+      }
+      \name{editor}{1}{}{%
+        {{hash=21144841154d8dd2a300c11a40b7a7bc}{%
+           family={READ},
+           familyi={R\bibinitperiod},
+           given={RONALD\bibnamedelima C.},
+           giveni={R\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Academic Press}%
+      }
+      \strng{namehash}{47329c8bf51660304d05d394a4f96d6d}
+      \strng{fullhash}{47329c8bf51660304d05d394a4f96d6d}
+      \strng{bibnamehash}{47329c8bf51660304d05d394a4f96d6d}
+      \strng{authorbibnamehash}{47329c8bf51660304d05d394a4f96d6d}
+      \strng{authornamehash}{47329c8bf51660304d05d394a4f96d6d}
+      \strng{authorfullhash}{47329c8bf51660304d05d394a4f96d6d}
+      \strng{editorbibnamehash}{21144841154d8dd2a300c11a40b7a7bc}
+      \strng{editornamehash}{21144841154d8dd2a300c11a40b7a7bc}
+      \strng{editorfullhash}{21144841154d8dd2a300c11a40b7a7bc}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Graph Theory and Computing}
+      \field{isbn}{978-1-4832-3187-7}
+      \field{title}{Evolution of the Path Number of a graph: Covering and Packing in Graphs}
+      \field{year}{1972}
+      \field{pages}{39\bibrangedash 45}
+      \range{pages}{7}
+      \verb{doi}
+      \verb https://doi.org/10.1016/B978-1-4832-3187-7.50009-X
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/B978148323187750009X
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/B978148323187750009X
+      \endverb
+    \endentry
+    \entry{cycle_basis}{misc}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=91f10e199fff38a8f6f99c617ec5aa27}{%
+           family={Horton},
+           familyi={H\bibinitperiod},
+           given={Joseph\bibnamedelima D.},
+           giveni={J\bibinitperiod\bibinitdelim D\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{91f10e199fff38a8f6f99c617ec5aa27}
+      \strng{fullhash}{91f10e199fff38a8f6f99c617ec5aa27}
+      \strng{bibnamehash}{91f10e199fff38a8f6f99c617ec5aa27}
+      \strng{authorbibnamehash}{91f10e199fff38a8f6f99c617ec5aa27}
+      \strng{authornamehash}{91f10e199fff38a8f6f99c617ec5aa27}
+      \strng{authorfullhash}{91f10e199fff38a8f6f99c617ec5aa27}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://unbscholar.dspace.lib.unb.ca/server/api/core/bitstreams/ac1f8c27-83eb-409b-80b2-93057e9dee19/content}}
+      \field{month}{8}
+      \field{note}{Acesso em 03 de fevereiro de 2026.}
+      \field{title}{A Polynomial Time Algorithm to Find the Shortest Cycle Basis of a Graph}
+      \field{year}{1984}
+    \endentry
+    \entry{ntafos1979}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=9d753e9fd7c6e412661ae3acaad2a1f4}{%
+           family={Ntafos},
+           familyi={N\bibinitperiod},
+           given={S.C.},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=499f6b2cb9e299e3489d51a378fe91a4}{%
+           family={Hakimi},
+           familyi={H\bibinitperiod},
+           given={S.L.},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{5ea782c11de4233915980f3f99d7ea0e}
+      \strng{fullhash}{5ea782c11de4233915980f3f99d7ea0e}
+      \strng{bibnamehash}{5ea782c11de4233915980f3f99d7ea0e}
+      \strng{authorbibnamehash}{5ea782c11de4233915980f3f99d7ea0e}
+      \strng{authornamehash}{5ea782c11de4233915980f3f99d7ea0e}
+      \strng{authorfullhash}{5ea782c11de4233915980f3f99d7ea0e}
+      \field{sortinit}{N}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Transactions on Software Engineering}
+      \field{number}{5}
+      \field{title}{On Path Cover Problems in Digraphs and Applications to Program Testing}
+      \field{volume}{SE-5}
+      \field{year}{1979}
+      \field{pages}{520\bibrangedash 529}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1109/TSE.1979.234213
+      \endverb
+      \keyw{Software testing;Costs;Automatic testing;Algorithmic complexity;Dilworth number;minimum path cover;must pairs;must paths;NP-hard;program testing;required pairs;required paths}
+    \endentry
+    \entry{oxley_matroids}{book}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=e88910853f4074606d954b033c7bc131}{%
+           family={Oxley},
+           familyi={O\bibinitperiod},
+           given={James},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Oxford Mathematics}%
+      }
+      \strng{namehash}{e88910853f4074606d954b033c7bc131}
+      \strng{fullhash}{e88910853f4074606d954b033c7bc131}
+      \strng{bibnamehash}{e88910853f4074606d954b033c7bc131}
+      \strng{authorbibnamehash}{e88910853f4074606d954b033c7bc131}
+      \strng{authornamehash}{e88910853f4074606d954b033c7bc131}
+      \strng{authorfullhash}{e88910853f4074606d954b033c7bc131}
+      \field{sortinit}{O}
+      \field{sortinithash}{2cd7140a07aea5341f9e2771efe90aae}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Matroid Theory, Second Edition}
+      \field{year}{2011}
+    \endentry
+    \entry{lattice_path_matroid_union}{misc}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=1425aa1480e73d4b4c60331a7fde7811}{%
+           family={Pol},
+           familyi={P\bibinitperiod},
+           given={Jon},
+           giveni={J\bibinitperiod},
+           givenun=0,
+           prefix={van\bibnamedelima der},
+           prefixi={v\bibinitperiod\bibinitdelim d\bibinitperiod},
+           prefixun=0}}%
+      }
+      \strng{namehash}{1425aa1480e73d4b4c60331a7fde7811}
+      \strng{fullhash}{1425aa1480e73d4b4c60331a7fde7811}
+      \strng{bibnamehash}{1425aa1480e73d4b4c60331a7fde7811}
+      \strng{authorbibnamehash}{1425aa1480e73d4b4c60331a7fde7811}
+      \strng{authornamehash}{1425aa1480e73d4b4c60331a7fde7811}
+      \strng{authorfullhash}{1425aa1480e73d4b4c60331a7fde7811}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://matroidunion.org/?p=5892}}
+      \field{month}{10}
+      \field{note}{Acesso em 02 de fevereiro de 2026.}
+      \field{title}{Lattice path matroids}
+      \field{year}{2025}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
