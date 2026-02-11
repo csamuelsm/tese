@@ -1,19 +1,19 @@
 [0] Config.pm:307> INFO - This is Biber 2.19
-[0] Config.pm:310> INFO - Logfile is 'main.blg'
-[149] biber-MSWIN64:340> INFO - === 
-[190] Biber.pm:419> INFO - Reading 'main.bcf'
-[301] Biber.pm:979> INFO - Found 14 citekeys in bib section 0
-[317] Biber.pm:4419> INFO - Processing section 0
-[330] Biber.pm:4610> INFO - Looking for bibtex file 'refs.bib' for section 0
-[381] bibtex.pm:1713> INFO - LaTeX decoding ...
-[403] bibtex.pm:1519> INFO - Found BibTeX data source 'refs.bib'
-[538] UCollate.pm:68> INFO - Overriding locale 'pt-BR' defaults 'variable = shifted' with 'variable = non-ignorable'
-[538] UCollate.pm:68> INFO - Overriding locale 'pt-BR' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[538] Biber.pm:4239> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'pt-BR'
-[538] Biber.pm:4245> INFO - No sort tailoring available for locale 'pt-BR'
-[558] bbl.pm:660> INFO - Writing 'main.bbl' with encoding 'UTF-8'
-[567] bbl.pm:763> INFO - Output to main.bbl
-[567] Biber.pm:131> WARN - legacy month field 'March' in entry 'tjoins_cp' is not an integer - this will probably not sort properly.
-[567] Biber.pm:131> WARN - legacy month field 'August' in entry 'cycle_basis' is not an integer - this will probably not sort properly.
-[567] Biber.pm:131> WARN - legacy month field 'October' in entry 'lattice_path_matroid_union' is not an integer - this will probably not sort properly.
-[567] Biber.pm:133> INFO - WARNINGS: 3
+[1] Config.pm:310> INFO - Logfile is 'main.blg'
+[175] biber-MSWIN64:340> INFO - === 
+[237] Biber.pm:419> INFO - Reading 'main.bcf'
+[375] Biber.pm:979> INFO - Found 14 citekeys in bib section 0
+[395] Biber.pm:4419> INFO - Processing section 0
+[412] Biber.pm:4610> INFO - Looking for bibtex file 'refs.bib' for section 0
+[493] bibtex.pm:1713> INFO - LaTeX decoding ...
+[521] bibtex.pm:1519> INFO - Found BibTeX data source 'refs.bib'
+[705] UCollate.pm:68> INFO - Overriding locale 'pt-BR' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[705] UCollate.pm:68> INFO - Overriding locale 'pt-BR' defaults 'variable = shifted' with 'variable = non-ignorable'
+[705] Biber.pm:4239> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'pt-BR'
+[705] Biber.pm:4245> INFO - No sort tailoring available for locale 'pt-BR'
+[733] bbl.pm:660> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[747] bbl.pm:763> INFO - Output to main.bbl
+[747] Biber.pm:131> WARN - legacy month field 'March' in entry 'tjoins_cp' is not an integer - this will probably not sort properly.
+[747] Biber.pm:131> WARN - legacy month field 'August' in entry 'cycle_basis' is not an integer - this will probably not sort properly.
+[747] Biber.pm:131> WARN - legacy month field 'October' in entry 'lattice_path_matroid_union' is not an integer - this will probably not sort properly.
+[747] Biber.pm:133> INFO - WARNINGS: 3

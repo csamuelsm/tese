@@ -438,8 +438,18 @@ Para iniciar os nossos estudos, vamos verificar o número de cobertura por camin
 \begin{proof}
   Primeiro, note que cada caminho em uma cobertura de $T$ cobre no máximo~2 folhas de $T$, portanto temos que $\pi^*(T) \geq \lceil \frac{\ell(T)}{2} \rceil$. Vamos mostrar agora a igualdade.
 
-  Sejam $l_1, l_2, \dots, l_{\ell(T)}$ as folhas de $T$ e denote por $P_{i,j}$ o caminho (único) entre $l_i$ e $l_j$ em $T$. Considere uma família $\mathcal{P}$ composta pelos caminhos $P_{i, \ell(T)/2+i}$, para $i\in\{1, \ell(T)/2\}$. Suponha que existe uma aresta $e$ em $T$ que não foi coberta por $\mathcal{P}$. Observe que $\mathcal{P}$ cobre todas as arestas incidentes a folhas de $T$, logo $e$ não é incidente a uma folha. Assim, ao removermos $e$ de $T$, obtemos duas componentes não-triviais $T_1$ e $T_2$. Existem então folhas $l_i, l_j, l_r, l_s$ tais que $P_{i, j} \subset T_1$ e $P_{r, s} \subset T_2$ e ambos estes caminhos estão em $\mathcal{P}$ (por quê?). Remova $P_{i, j}$ e $P_{r, s}$ de $\mathcal{P}$ e adicione $P_{i, r}$ e $P_{j, s}$. A nova família $\mathcal{P}'$ cobre todas as mesmas arestas cobertas anteriormente, além de cobrir também a arestas $e$ que não estava coberta. Repetimos então este procedimento no máximo $n-1$ vezes até que todas as arestas sejam cobertas por $\ell(T)/2$ caminhos.
+  Sejam $l_1, l_2, \dots, l_{\ell(T)}$ as folhas de $T$ e denote por $P_{i,j}$ o caminho (único) entre $l_i$ e $l_j$ em $T$. Considere uma família $\mathcal{P}$ composta pelos caminhos $P_{i, \ell(T)/2+i}$, para $i\in\{1, \ell(T)/2\}$. Suponha que existe uma aresta $e$ em $T$ que não foi coberta por $\mathcal{P}$. Observe que $\mathcal{P}$ cobre todas as arestas incidentes a folhas de $T$, logo $e$ não é incidente a uma folha. Assim, ao removermos $e$ de $T$, obtemos duas componentes não-triviais $T_1$ e $T_2$. Existem então folhas $l_i, l_j, l_r, l_s$ tais que $P_{i, j} \subset T_1$ e $P_{r, s} \subset T_2$ e ambos estes caminhos estão em $\mathcal{P}$. Remova $P_{i, j}$ e $P_{r, s}$ de $\mathcal{P}$ e adicione $P_{i, r}$ e $P_{j, s}$. A nova família $\mathcal{P}'$ cobre todas as mesmas arestas cobertas anteriormente, além de cobrir também a arestas $e$ que não estava coberta. Repetimos então este procedimento no máximo $n-1$ vezes até que todas as arestas sejam cobertas por $\ell(T)/2$ caminhos.
 \end{proof}
+
+\subsection{Cobrindo cactos com caminhos}
+
+Agora que vimos como cobrir árvores, vamos expandir um pouco mais a classe de grafos e ver como cobrir cactos. Cactos são grafos em que cada bloco é uma aresta ou um ciclo. Observe que a classe de cactos inclui todas as árvores. Nesta subseção inteira, seja $G$ um grafo cacto conexo. A primeira observação que faremos é trivial e está no seguinte lema.
+
+\begin{lemma}
+  Se $G \cong P_n$, então $\pi^*(G) = 1$. Se $G \cong C_n$, então $\pi^*(G) = 2$.
+\end{lemma}
+
+\subsection{Questões em aberto e comentários do autor}
 
 \begin{question}{}{gallais_conj}
 Até o momento em que este documento foi escrito, pelo conhecimento do autor, sabe-se que os melhores limites obtidos são 
@@ -470,6 +480,91 @@ Nesta seção, nós iremos estudar um pouco do trabalho de \parencite{isometric_
 \subsection{Encontrando a base de ciclos de um grafo}
 
 Acreditem ou não, os ciclos de um grafo em certo sentido podem ser vistos como um espaço vetorial! Esse espaço vetorial tem bases: ciclos minimais que geram todos os outros através de uma certa operação. Nesta seção, nós vamos conhecer melhor esse espaço vetorial de ciclos e suas bases, além de um algoritmo para encontrar a base de ciclos de qualquer grafo. Esta seção vai ser baseada em \parencite{cycle_basis}.
+
+Um ciclo $C \subseteq E(G)$ é um subgrafo de $G$ em que todos os vértices possuem grau~2. Dados dois ciclos, $C$ e $D$, podemos obter a soma deles $C+D$ através da operação de diferença simétrica, isto é, $C+D=C \Delta D = (C - D) \cup (D - C)$. O conjunto de todos os ciclos de $G$, que é fechado sob a operação de adição que definimos acima, é chamado de \textit{espaço de ciclos} de $G$. A dimensão do espaço de ciclos de $G$ é $d=m-n+1$. Uma \textit{base de ciclos} de $G$ é um conjunto \textit{minimal} de ciclos de $G$ que geram todos os demais ciclos.
+
+\begin{lemma}[Comutatividade da diferença simétrica]
+  Sejam $C_1, C_2$ ciclos de $G$. Então $C_1+C_2 = C_2+C_1$.
+\end{lemma}
+
+\begin{lemma}[Associatividade da diferença simétrica]
+  Sejam $C_1, C_2, C_3$ ciclos de $G$. Então $(C_1+C_2)+C_3 = C_1+(C_2+C_3)$.
+\end{lemma}
+
+\begin{lemma}
+  Sejam $C$ um ciclo de $G$. Então $C+C=\emptyset$.
+\end{lemma}
+
+\begin{proof}
+  $C+C=(C-C) \cup (C-C) = \emptyset$.
+\end{proof}
+
+\begin{lemma}
+  Se $C = C_1 + C_2$, então $C_1 = C + C_2$.
+\end{lemma}
+
+\begin{proof}
+  $C + C_2 = (C_1 + C_2) + C_2 = C_1 + (C_2 + C_2) = C_1$.
+\end{proof}
+
+Em \parencite{cycle_basis}, o objetivo é encontrar uma base de ciclos cuja soma total dos comprimentos dos seus ciclos seja mínima. Para isto, os autores mostraram algumas propriedades que ciclos em uma base de comprimento total mínimo devem ter.
+
+\begin{lemma}[\cite{cycle_basis}]
+  \label{lem:basis_exc_lemma}
+  Se $\mathcal{B}$ é uma base de ciclos de $G$ e $C \in \mathcal{B}$ com $C=C_1 + C_2$, então $(\mathcal{B} \setminus \{C\}) \cup \{C_i\}$ é uma base de ciclos de $G$, para $i=1$ ou $i=2$.
+\end{lemma}
+
+\textcolor{blue}{Comentário: essa propriedade lembra um pouco a propriedade de troca de matróides... É estranho o quanto coisas muito parecidas com matróides acabam aparecendo em trabalhos sobre esse tema.}
+
+\begin{proof}
+  Tanto $C_1$ quanto $C_2$ são gerados por $\mathcal{B}$, ambos de forma única (pois a base sempre é minimal). Logo, para $i\in\{1, 2\}$, temos que $C_i$ é gerado por um único $A_i \subseteq \mathcal{B}$. Temos então que
+  \[
+  \sum_{A_1^j \in A_1} A_1^j = C_1 = C+C_2 = C + \sum_{A_2^j \in A_2} A_2^j.
+  \]
+
+  Note que ou $A_1$ ou $A_2$ deve possuir $C$, mas não ambos. Isto ocorre pois, se $C$ estivesse em ambos $A_1$ ou $A_2$, ele desapareceria na diferença simétrica e $A_1 + A_2 \neq C$. Mas $C$ deve estar em pelo menos um $A_1$ ou $A_2$, caso contrário não haveria como $A_1 + A_2 = C$. Assuma então, sem perda de generalidade, que $C \in A_1$. Então $\mathcal{B} \setminus \{C\}$ ainda gera $C_2$, mas não gera $C_1$, pois $A_1$ é a representação única de $C_1$ e $C \in A_1$. Portanto, $\mathcal{B}'=(\mathcal{B} \setminus \{C\}) \cup \{C_1\}$ gera $C_1$, $C_2$, $C$ e todos os demais ciclos de $G$, portanto $\mathcal{B}'$ é uma base.
+\end{proof}
+
+\begin{theorem}[\cite{cycle_basis}]
+  Um base de ciclos mínima de $G$ consiste somente de ciclos simples.
+\end{theorem}
+
+\begin{proof}
+  Seja $\mathcal{B}$ uma base de ciclos mínima de $G$ e suponha que $C \in \mathcal{B}$ é um ciclo que não é simples. Então $C$ contém um ciclo simples $C_1$ tal que $C=C_1 \cup C_2$, onde $C_2$ é um ciclo. Mas, como estamos assumindo que todos os ciclos simples possuem peso positivo, então $0 < w(C_1) < w(C)$ e $0 < w(C_2) = w(C)-w(C_1) < w(C)$. Mas então, pelo Lema \ref{lem:basis_exc_lemma}, temos que $\mathcal{B}'=(\mathcal{B} \setminus \{C\}) \cup \{C_i\}$ é uma base de ciclos de $G$ com peso menor que $\mathcal{B}$.
+\end{proof}
+
+Denote por $P_{x, y}$ o caminho mínimo de $x$ para $y$ em $G$.
+
+\begin{theorem}[\cite{cycle_basis}]
+  \label{theo:cycle_basis_min_path}
+  Sejam $x$ e $y$ vértices de um ciclo $C$ de uma base de ciclos mínima de $\mathcal{B}$. Então $P_{x,y}$ está contido em $C$.
+\end{theorem}
+
+\begin{proof}
+  Sejam $P_1$ e $P_2$ dois caminhos entre $x$ e $y$ em $C$. Suponha que $P_1 \neq P_{x,y}$ e $P_2 \neq P_{x,y}$. Defina $C_i = P_{x,y} \cup P_i$ para $i\in\{1, 2\}$. Então $C_1$ e $C_2$ são ciclos e $C=C_1 + C_2$. Note que $w(C_i) \leq w(P_{x,y})+w(P_i) < w(P_1) + w(P_2) = w(C)$. Pelo Lema \ref{lem:basis_exc_lemma}, conseguimos obter uma base de ciclos menor de $G$ removendo $C$ e adicionando $C_1$ ou $C_2$ a $\mathcal{B}$, o que contradiz a suposição de que $\mathcal{B}$ é mínima.
+\end{proof}
+
+\begin{theorem}[\cite{cycle_basis}]
+  \label{theo:vertex_edge_cycle_basis_cond}
+  Seja $x$ qualquer vértice de um ciclo $C$ em uma base de ciclos mínima $\mathcal{B}$. Então, existe uma aresta $yz \in C$ tal que $C=P_{x,y} \cup \{yz\} \cup P_{z,x}$.
+\end{theorem}
+
+\begin{proof}
+  Seja $C = (x_0, x_1, \dots, x_{n-1}, x_n=x_0)$. Defina $P_i=(x, x_1, \dots, x_i)$ and $Q_i = (x, x_n, \dots, x_i)$. Pelo Teorema \ref{theo:cycle_basis_min_path}, temos que $P_{x, x_i}$ é igual a $P_i$ ou $Q_i$. Se $P_{x, x_i} = P_i$ e $1 \leq j \leq i$, então $P_{x, x_j}=P_j$ pois um subcaminho de qualquer caminho mínimo é também um caminho mínimo. O mesmo vale analogamente se $P_{x, x_i}=Q_i$. Seja $y=x_i$ onde $i$ é o maior índice tal que $P_{x, x_i} = P_i$ e seja $z=x_{i+1}$. Então $P_{x,y} \cup \{yz\} \cup P_{x, z} = P_i \cup \{yz\} \cup Q_{i+1} = C$.
+\end{proof}
+
+Com o Teorema \ref{theo:vertex_edge_cycle_basis_cond}, nós temos uma condição bem forte para um ciclo estar em uma base de ciclos mínima. Podemos encontrar todos os ciclos em uma base de ciclos mínima considerando, para cada par de vértice e aresta $(x, yz)$, o ciclo $C(x, y, z) = P_{x, y} \cup yz \cup P_{z, x}$. É claro, existem $O(mn)$ tais ciclos.
+
+Considere uma matróide $M$ cujo conjunto base é o conjunto $\mathcal{C}$ de $O(mn)$ ciclos de $G$ tais como descrevemos acima e suas bases são $\mathcal{B} \subseteq \mathcal{C}$ tais que $\mathcal{B}$ é uma base de ciclos de $G$. Pelo Lema \ref{lem:basis_exc_lemma}, vemos que $M$ de fato é uma matróide pois satisfaz a propriedade da troca. Como $M$ é matróide, basta utilizarmos agora um algoritmo guloso para obter uma base de ciclos de comprimento mínimo para $G$. O algoritmo então é o seguinte:
+
+\begin{enumerate}
+  \item Encontre caminhos mínimos entre cada par de vértice;
+  \item Para cada vértice $v$ e aresta $xy$ de $G$, armazene o ciclo $C(v, x, y) = P_{v, x} \cup \{xy\} \cup P_{y, v}$, se existir;
+  \item Ordene os ciclos de acordo com seu peso;
+  \item Obtenha de maneira gulosa uma base de ciclos mínima para $G$.
+\end{enumerate}
+
+Pelos teoremas que provamos anteriormente, o algoritmo acima está correto. Além disso, é fácil ver que ele pode ser executado em tempo $O(m^3n)$.
 
 \subsection{Cobertura dupla por ciclos}
 

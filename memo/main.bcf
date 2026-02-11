@@ -2373,20 +2373,25 @@
     <bcf:citekey order="8" intorder="1">HARARY197239</bcf:citekey>
     <bcf:citekey order="9" intorder="1">isometric_path_cover</bcf:citekey>
     <bcf:citekey order="10" intorder="1">cycle_basis</bcf:citekey>
-    <bcf:citekey order="11" intorder="1">ntafos1979</bcf:citekey>
-    <bcf:citekey order="12" intorder="1">ntafos1979</bcf:citekey>
-    <bcf:citekey order="13" intorder="1">ntafos1979</bcf:citekey>
-    <bcf:citekey order="14" intorder="1">ntafos1979</bcf:citekey>
-    <bcf:citekey order="15" intorder="1">CHARTRAND200325</bcf:citekey>
-    <bcf:citekey order="16" intorder="1">bonin_de_mier</bcf:citekey>
-    <bcf:citekey order="17" intorder="1">lattice_path_matroid_union</bcf:citekey>
-    <bcf:citekey order="18" intorder="1">BONIN2006701</bcf:citekey>
-    <bcf:citekey order="19" intorder="1">gammoids_coloring</bcf:citekey>
-    <bcf:citekey order="20" intorder="1">oxley_matroids</bcf:citekey>
-    <bcf:citekey order="21" intorder="1">oxley_matroids</bcf:citekey>
-    <bcf:citekey order="21" intorder="2">bonin_de_mier</bcf:citekey>
-    <bcf:citekey order="22" intorder="1">matroid_simplicial_complex</bcf:citekey>
-    <bcf:citekey order="23" intorder="1">matroid_simplicial_complex</bcf:citekey>
+    <bcf:citekey order="11" intorder="1">cycle_basis</bcf:citekey>
+    <bcf:citekey order="12" intorder="1">cycle_basis</bcf:citekey>
+    <bcf:citekey order="13" intorder="1">cycle_basis</bcf:citekey>
+    <bcf:citekey order="14" intorder="1">cycle_basis</bcf:citekey>
+    <bcf:citekey order="15" intorder="1">cycle_basis</bcf:citekey>
+    <bcf:citekey order="16" intorder="1">ntafos1979</bcf:citekey>
+    <bcf:citekey order="17" intorder="1">ntafos1979</bcf:citekey>
+    <bcf:citekey order="18" intorder="1">ntafos1979</bcf:citekey>
+    <bcf:citekey order="19" intorder="1">ntafos1979</bcf:citekey>
+    <bcf:citekey order="20" intorder="1">CHARTRAND200325</bcf:citekey>
+    <bcf:citekey order="21" intorder="1">bonin_de_mier</bcf:citekey>
+    <bcf:citekey order="22" intorder="1">lattice_path_matroid_union</bcf:citekey>
+    <bcf:citekey order="23" intorder="1">BONIN2006701</bcf:citekey>
+    <bcf:citekey order="24" intorder="1">gammoids_coloring</bcf:citekey>
+    <bcf:citekey order="25" intorder="1">oxley_matroids</bcf:citekey>
+    <bcf:citekey order="26" intorder="1">oxley_matroids</bcf:citekey>
+    <bcf:citekey order="26" intorder="2">bonin_de_mier</bcf:citekey>
+    <bcf:citekey order="27" intorder="1">matroid_simplicial_complex</bcf:citekey>
+    <bcf:citekey order="28" intorder="1">matroid_simplicial_complex</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nyt">

@@ -9,24 +9,26 @@
 \contentsline {section}{\numberline {3.2}Florestas}{11}{section.3.2}%
 \contentsline {section}{\numberline {3.3}Caminhos}{11}{section.3.3}%
 \contentsline {subsection}{Cobrindo árvores com caminhos}{11}{section*.5}%
-\contentsline {subsection}{Particionando grafos em $\lceil \frac {n}{2} \rceil $ caminhos ou ciclos}{12}{section*.6}%
-\contentsline {subsection}{Cobrindo os vértices de um grafo usando caminhos mínimos}{12}{section*.7}%
+\contentsline {subsection}{Cobrindo cactos com caminhos}{12}{section*.6}%
+\contentsline {subsection}{Questões em aberto e comentários do autor}{12}{section*.7}%
+\contentsline {subsection}{Particionando grafos em $\lceil \frac {n}{2} \rceil $ caminhos ou ciclos}{13}{section*.8}%
+\contentsline {subsection}{Cobrindo os vértices de um grafo usando caminhos mínimos}{13}{section*.9}%
 \contentsline {section}{\numberline {3.4}Ciclos}{13}{section.3.4}%
-\contentsline {subsection}{Encontrando a base de ciclos de um grafo}{13}{section*.8}%
-\contentsline {subsection}{Cobertura dupla por ciclos}{13}{section*.9}%
-\contentsline {section}{\numberline {3.5}Passeios em digrafos}{13}{section.3.5}%
-\contentsline {chapter}{\chapternumberline {4}Fronteira, Contorno e Periferia}{17}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Grafos cordais e vértices extremos}{18}{section.4.1}%
-\contentsline {chapter}{\chapternumberline {5}Tópicos em Matróides e Coberturas}{19}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Algumas famílias (potencialmente) úteis de matróides}{19}{section.5.1}%
-\contentsline {subsection}{Matróides de \textit {Lattice Path}}{19}{section*.10}%
-\contentsline {subsection}{Matróides Gamóides}{20}{section*.11}%
-\contentsline {subsection}{Matróides Gráficas}{20}{section*.12}%
-\contentsline {section}{\numberline {5.2}Cobertura de matróides}{20}{section.5.2}%
-\contentsline {subsection}{A correspondência entre caminhos crescentes em um grafo de intervalos próprios e uma matróide de \textit {lattice path}}{21}{section*.13}%
-\contentsline {subsection}{O Algoritmo de Edmonds para coloração de matróides}{22}{section*.15}%
-\contentsline {subsection}{Cobrindo as arestas de um grafo de intervalos próprio por caminhos}{22}{section*.16}%
-\contentsline {section}{\numberline {5.3}Interseção de matróides}{22}{section.5.3}%
-\contentsline {subsection}{O problema do \textsc {$k$-Caminho Rainbow}}{23}{section*.17}%
-\contentsline {subsection}{Cobrindo um grafo de intervalos próprio colorido em arestas por caminhos rainbow}{23}{section*.18}%
-\contentsline {chapter}{Bibliografia}{25}{section*.20}%
+\contentsline {subsection}{Encontrando a base de ciclos de um grafo}{13}{section*.10}%
+\contentsline {subsection}{Cobertura dupla por ciclos}{15}{section*.11}%
+\contentsline {section}{\numberline {3.5}Passeios em digrafos}{16}{section.3.5}%
+\contentsline {chapter}{\chapternumberline {4}Fronteira, Contorno e Periferia}{19}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Grafos cordais e vértices extremos}{20}{section.4.1}%
+\contentsline {chapter}{\chapternumberline {5}Tópicos em Matróides e Coberturas}{21}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Algumas famílias (potencialmente) úteis de matróides}{21}{section.5.1}%
+\contentsline {subsection}{Matróides de \textit {Lattice Path}}{21}{section*.12}%
+\contentsline {subsection}{Matróides Gamóides}{22}{section*.13}%
+\contentsline {subsection}{Matróides Gráficas}{22}{section*.14}%
+\contentsline {section}{\numberline {5.2}Cobertura de matróides}{22}{section.5.2}%
+\contentsline {subsection}{A correspondência entre caminhos crescentes em um grafo de intervalos próprios e uma matróide de \textit {lattice path}}{23}{section*.15}%
+\contentsline {subsection}{O Algoritmo de Edmonds para coloração de matróides}{24}{section*.17}%
+\contentsline {subsection}{Cobrindo as arestas de um grafo de intervalos próprio por caminhos}{24}{section*.18}%
+\contentsline {section}{\numberline {5.3}Interseção de matróides}{24}{section.5.3}%
+\contentsline {subsection}{O problema do \textsc {$k$-Caminho Rainbow}}{25}{section*.19}%
+\contentsline {subsection}{Cobrindo um grafo de intervalos próprio colorido em arestas por caminhos rainbow}{25}{section*.20}%
+\contentsline {chapter}{Bibliografia}{27}{section*.22}%

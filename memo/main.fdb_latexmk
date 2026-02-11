@@ -1,18 +1,18 @@
 # Fdb version 4
-["biber main"] 1770295164.08515 "main.bcf" "main.bbl" "main" 1770301871.44453 0
-  "main.bcf" 1770301871 109507 473cbdafe2b589ab5416d26fc44f2fd4 "pdflatex"
+["biber main"] 1770824790.32829 "main.bcf" "main.bbl" "main" 1770826071.70344 0
+  "main.bcf" 1770826071 109842 7ea275cdc6d004bfa387b105f737b100 "pdflatex"
   "refs.bib" 1770154037 7640 ac4c71e9b80fc68e1ee4013ea432aa89 ""
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["makeindex main.idx"] 1770153964.98632 "main.idx" "main.ind" "main" 1770301871.44408 0
-  "main.idx" 1770301869 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+["makeindex main.idx"] 1770815065.70835 "main.idx" "main.ind" "main" 1770826071.70245 0
+  "main.idx" 1770826069 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
   (generated)
   "main.ilg"
   "main.ind"
   (rewritten before read)
-["pdflatex"] 1770301868.13899 "c:/Users/Usuario/Documents/Tese/memo/main.tex" "main.pdf" "main" 1770301871.4453 0
+["pdflatex"] 1770826067.47569 "c:/Users/Usuario/Documents/Tese/memo/main.tex" "main.pdf" "main" 1770826071.70473 0
   "C:/Users/Usuario/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1770133747 131923 a5d36b3df5aaf7618fb20dd71d0a09a1 ""
   "C:/Users/Usuario/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1000.pk" 1739731116 11548 f07d9cc4eca32fdefaa81878e225be5f ""
   "C:/Users/Usuario/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1729948263 24225991 3a4b735bf17e3ec7522f2b1e9335f574 ""
@@ -323,14 +323,14 @@
   "C:/Users/Usuario/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1700127522 55487 80a65caedd3722f4c20a14a69e785d8f ""
   "C:/Users/Usuario/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty" 1656236919 4937 4ce600ce9bd4ec84d0250eb6892fcf4f ""
   "C:/Users/Usuario/AppData/Local/Programs/MiKTeX/tex/latex/xpatch/xpatch.sty" 1585221260 8510 7803f78066c4f9d008405191a4b43073 ""
-  "c:/Users/Usuario/Documents/Tese/memo/main.tex" 1770301867 49044 7cc829a517fa144d4ee3f8a41a4d6e1b ""
-  "main.aux" 1770301871 12143 bb65c22a137564620189870e3de1c016 "pdflatex"
-  "main.bbl" 1770295166 27644 2157332fe582a5f1dae726b585f63e0a "biber main"
-  "main.ind" 1770153965 0 d41d8cd98f00b204e9800998ecf8427e "makeindex main.idx"
-  "main.out" 1770301871 2899 e21c0408e6a4c44c9d307fa58693459c "pdflatex"
-  "main.run.xml" 1770301871 2353 5d502c45457e74a1e29f368e24532012 "pdflatex"
-  "main.tex" 1770301867 49044 7cc829a517fa144d4ee3f8a41a4d6e1b ""
-  "main.toc" 1770301871 2800 d8ee1e9adf875464070a3cab880166dc "pdflatex"
+  "c:/Users/Usuario/Documents/Tese/memo/main.tex" 1770826066 56228 c5805fd61a976253da3a964dc08b7358 ""
+  "main.aux" 1770826071 13067 ad235133507ebfaf23477906f2fad012 "pdflatex"
+  "main.bbl" 1770824794 27644 2157332fe582a5f1dae726b585f63e0a "biber main"
+  "main.ind" 1770815066 0 d41d8cd98f00b204e9800998ecf8427e "makeindex main.idx"
+  "main.out" 1770826071 2899 d3cb188b13212a96c6225cb0878506c8 "pdflatex"
+  "main.run.xml" 1770826071 2353 5d502c45457e74a1e29f368e24532012 "pdflatex"
+  "main.tex" 1770826066 56228 c5805fd61a976253da3a964dc08b7358 ""
+  "main.toc" 1770826071 2965 ee2969956efe7e82985b9886ac8aab22 "pdflatex"
   (generated)
   "main.aux"
   "main.bcf"
